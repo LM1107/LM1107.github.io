@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>20.7.5-C-Primir-Plus_第一章笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C Primir Plus第一章摘录1. 使用C语言的7个步骤1.1 第一步：定义程序的目标​    在写代码之前，要在脑海中理清思路。现在要写的这个程序具体要做什么自己想做什么；还需要思考你的程序需要哪些信息，要进行那些计算和控制；以及程序应该要报告什么信息。这一步骤不需要具体的计算机语言，应该用一般的术语来描述问题。 1.2 第二步：设计程序​    对程序应该完成什么功能有概念性的认识后，就">
+  <meta name="description" content="C Primir Plus第一章摘录1. 使用C语言的7个步骤1.1 第一步：定义程序的目标​    在写代码之前，要在脑海中理清思路。现在要写的这个程序具体要做什么自己想做什么；还需要思考你的程序需要哪些信息，要进行那些计算和控制；以及程序应该要报告什么信息。这一步骤不需要具体的计算机语言，应该用一般的术语来描述问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20.7.5-C-Primir-Plus_第一章笔记">
 <meta property="og:url" content="http://yoursite.com/2020/07/05/20-7-5-C-Primir-Plus-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="C Primir Plus第一章摘录1. 使用C语言的7个步骤1.1 第一步：定义程序的目标​    在写代码之前，要在脑海中理清思路。现在要写的这个程序具体要做什么自己想做什么；还需要思考你的程序需要哪些信息，要进行那些计算和控制；以及程序应该要报告什么信息。这一步骤不需要具体的计算机语言，应该用一般的术语来描述问题。 1.2 第二步：设计程序​    对程序应该完成什么功能有概念性的认识后，就">
+<meta property="og:description" content="C Primir Plus第一章摘录1. 使用C语言的7个步骤1.1 第一步：定义程序的目标​    在写代码之前，要在脑海中理清思路。现在要写的这个程序具体要做什么自己想做什么；还需要思考你的程序需要哪些信息，要进行那些计算和控制；以及程序应该要报告什么信息。这一步骤不需要具体的计算机语言，应该用一般的术语来描述问题。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-05T08:35:53.000Z">
-<meta property="article:modified_time" content="2020-07-05T09:52:06.589Z">
+<meta property="article:modified_time" content="2020-07-05T10:18:51.548Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="使用C语言的七个步骤">
 <meta name="twitter:card" content="summary">
@@ -173,9 +173,38 @@
         
       </header>
     
+    <!-- 目录内容 -->
+    
+        <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+              <span class="btn-bg"></span>
+              <span class="btn-text">文章导航</span>
+              </p>
+    	<div id="toc-article" class="toc-article">
+    	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+    		<strong class="toc-title">文章目录</strong>
+               <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Primir-Plus第一章摘录"><span class="toc-number">1.</span> <span class="toc-text">C Primir Plus第一章摘录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用C语言的7个步骤"><span class="toc-number">1.1.</span> <span class="toc-text">1. 使用C语言的7个步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-第一步：定义程序的目标"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 第一步：定义程序的目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-第二步：设计程序"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 第二步：设计程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-第三步：编写代码"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 第三步：编写代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-第四步：编译"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 第四步：编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-第五步：运行程序"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 第五步：运行程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-第六步：测试和调试程序"><span class="toc-number">1.1.6.</span> <span class="toc-text">1.6 第六步：测试和调试程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7：第七步：维护和修改代码"><span class="toc-number">1.1.7.</span> <span class="toc-text">1.7：第七步：维护和修改代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8：第八步：说明"><span class="toc-number">1.1.8.</span> <span class="toc-text">1.8：第八步：说明</span></a></li></ol></li></ol></li></ol>
+             </div>
+       <script type="text/javascript">
+    	function showToc(){
+    		var toc_article = document.getElementById("toc-article");
+    		var show_toc_btn = document.getElementById("show-toc-btn");
+    		toc_article.setAttribute("style","display:block");
+    		show_toc_btn.setAttribute("style","display:none");
+    		};
+    	function showBtn(){
+    		var toc_article = document.getElementById("toc-article");
+    		var show_toc_btn = document.getElementById("show-toc-btn");
+    		toc_article.setAttribute("style","display:none");
+    		show_toc_btn.setAttribute("style","display:block");
+    		};
+       </script>
+          
+    <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="C-Primir-Plus第一章摘录"><a href="#C-Primir-Plus第一章摘录" class="headerlink" title="C Primir Plus第一章摘录"></a>C Primir Plus第一章摘录</h2><h3 id="1-使用C语言的7个步骤"><a href="#1-使用C语言的7个步骤" class="headerlink" title="1. 使用C语言的7个步骤"></a>1. 使用C语言的7个步骤</h3><h4 id="1-1-第一步：定义程序的目标"><a href="#1-1-第一步：定义程序的目标" class="headerlink" title="1.1 第一步：定义程序的目标"></a>1.1 第一步：定义程序的目标</h4><p>​    在写代码之前，要在脑海中理清思路。现在要写的这个程序具体要做什么自己想做什么；还需要思考你的程序需要哪些信息，要进行那些计算和控制；以及程序应该要报告什么信息。这一步骤不需要具体的计算机语言，应该用一般的术语来描述问题。</p>
+<a id="more"></a>
+
 <h4 id="1-2-第二步：设计程序"><a href="#1-2-第二步：设计程序" class="headerlink" title="1.2 第二步：设计程序"></a>1.2 第二步：设计程序</h4><p>​    对程序应该完成什么功能有概念性的认识后，就应该考虑如何用程序来完成它，例如，用户界面应该是怎样的？目标用户是谁？准备花多长时间来完成这个程序？</p>
 <p>​    除此之外，还要决定在程序中如何表示数据，以及用什么方法来处理数据。学习C语言之初，由于太简单不用考虑到这里，但是随着要处理的情况越来越复杂，需要决策和考虑的方面也越来越多。因为选择一个合适的方式表示信息可以更容易地设计程序和处理数据。</p>
 <p>​    同时，在这一步，仍然不需要具体的代码来描述问题，应该用一般的术语来实现它。</p>
@@ -319,13 +348,26 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-Primir-Plus第一章摘录"><span class="toc-number">1.</span> <span class="toc-text">C Primir Plus第一章摘录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用C语言的7个步骤"><span class="toc-number">1.1.</span> <span class="toc-text">1. 使用C语言的7个步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-第一步：定义程序的目标"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 第一步：定义程序的目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-第二步：设计程序"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 第二步：设计程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-第三步：编写代码"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 第三步：编写代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-第四步：编译"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 第四步：编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-第五步：运行程序"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 第五步：运行程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-第六步：测试和调试程序"><span class="toc-number">1.1.6.</span> <span class="toc-text">1.6 第六步：测试和调试程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7：第七步：维护和修改代码"><span class="toc-number">1.1.7.</span> <span class="toc-text">1.7：第七步：维护和修改代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8：第八步：说明"><span class="toc-number">1.1.8.</span> <span class="toc-text">1.8：第八步：说明</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
 
 
   
-  
+
   
 
   
@@ -426,6 +468,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">使用C语言的七个步骤</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

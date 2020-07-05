@@ -170,27 +170,15 @@
         
       </header>
     
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="C-Primir-Plus第一章摘录"><a href="#C-Primir-Plus第一章摘录" class="headerlink" title="C Primir Plus第一章摘录"></a>C Primir Plus第一章摘录</h2><h3 id="1-使用C语言的7个步骤"><a href="#1-使用C语言的7个步骤" class="headerlink" title="1. 使用C语言的7个步骤"></a>1. 使用C语言的7个步骤</h3><h4 id="1-1-第一步：定义程序的目标"><a href="#1-1-第一步：定义程序的目标" class="headerlink" title="1.1 第一步：定义程序的目标"></a>1.1 第一步：定义程序的目标</h4><p>​    在写代码之前，要在脑海中理清思路。现在要写的这个程序具体要做什么自己想做什么；还需要思考你的程序需要哪些信息，要进行那些计算和控制；以及程序应该要报告什么信息。这一步骤不需要具体的计算机语言，应该用一般的术语来描述问题。</p>
-<h4 id="1-2-第二步：设计程序"><a href="#1-2-第二步：设计程序" class="headerlink" title="1.2 第二步：设计程序"></a>1.2 第二步：设计程序</h4><p>​    对程序应该完成什么功能有概念性的认识后，就应该考虑如何用程序来完成它，例如，用户界面应该是怎样的？目标用户是谁？准备花多长时间来完成这个程序？</p>
-<p>​    除此之外，还要决定在程序中如何表示数据，以及用什么方法来处理数据。学习C语言之初，由于太简单不用考虑到这里，但是随着要处理的情况越来越复杂，需要决策和考虑的方面也越来越多。因为选择一个合适的方式表示信息可以更容易地设计程序和处理数据。</p>
-<p>​    同时，在这一步，仍然不需要具体的代码来描述问题，应该用一般的术语来实现它。</p>
-<h4 id="1-3-第三步：编写代码"><a href="#1-3-第三步：编写代码" class="headerlink" title="1.3 第三步：编写代码"></a>1.3 第三步：编写代码</h4><p>​    设计好程序后，就可以编写代码来实现它，也就是说，用C语言来实现前两步中的术语，把设计的程序翻译成C语言。可以通过图纸来演算，分析。这个过程的机制取决于编程环境。在CPrimirPlus这本书中说的“一般而言，使用文本编辑器创建源代码文件。该文件中的内容就是你翻译的C语言代码”，我个人认为“大人，时代不同了”，虽然现在还是有些人使用的上述方法，不过我感觉现在使用最普遍的还是通过编译器或者IDE来编程，比如VC++6.0、visual studio等等。</p>
-<h4 id="1-4-第四步：编译"><a href="#1-4-第四步：编译" class="headerlink" title="1.4 第四步：编译"></a>1.4 第四步：编译</h4><p>​    接下来这一步就是编译源代码。编译的细节取决于编程的环境。</p>
-<p>​    编译器就是把源代码转换成可执行代码的程序。可执行代码是用计算机的机器语言表示的代码。这种语言由数字码表示的指令组成。如前所述，不同的计算机使用不同的机器语言方案。C编译器负责把C代码翻译成特定的机器语言。此外，C编译器还将源代码与C库（库中包含大量的标准函数供用户使用，如printf()和scanf()）的代码合并成最终程序（更准确地说，应该是一个被称为链接器的程序来链接库文件，但是在大多数系统中，编译器运行链接器）。其结果是，生成一个用户可以运行的可执行文件，其中包含着计算机能理解的代码。</p>
-<p>​    编译器还会检查C语言的程序是否有效。如果C编译器发现错误，就不生成可执行文件并且报错。理解特定编译器报告的错误或警告信息是程序员要掌握的另一项技能。</p>
-<h4 id="1-5-第五步：运行程序"><a href="#1-5-第五步：运行程序" class="headerlink" title="1.5 第五步：运行程序"></a>1.5 第五步：运行程序</h4><p>​    传统上，可执行文件是可运行的程序。在常见环境（包括Windows命令提示符模式、UNIX终端模式和Linux终端模式中运行程序要输入可执行文件的文件名，而其他环境可能要运行命令（如，在VAX中h和VMS^1^）或一些其他机制。例如，在Windows中和Macintosh提供的集成开发环境（IDE）中，用户可以在IDE中通过选择菜单中的选项或按下特殊键来编辑和执行C程序 。最终生成的程序可通过单机或双击文件名或图标直接在操作系统中运行。</p>
-<h4 id="1-6-第六步：测试和调试程序"><a href="#1-6-第六步：测试和调试程序" class="headerlink" title="1.6 第六步：测试和调试程序"></a>1.6 第六步：测试和调试程序</h4><p>​    程序能运行是个好迹象，但有时也可能会出现运行错误。接下来应该检查程序是否按照你所设计的思路运行。你会发现你的程序中有一些错误，计算机行话叫做bug。查找并修复程序错误的过程叫调试，学习的过程不可避免会犯错，学习编程也是如此。因此，当你把所学的知识应用于编程时，最好为自己会犯错做好心理准备，随着你越来越老练，你所写的程序中的错误也会越来越不易察觉。</p>
-<p>​    将来犯错的机会很多（所以我会在blog中设计一个专门记录报错信息的板块）。可能会犯基本的设计错误；也可能错误地实现了一个好想法；还可能忽视了输入检查导致程序瘫痪；可能把圆括号放错了地方；可能误用C语言或打错字……等等。把你将来犯错的地方列出来，这份错误清单应该会很长。</p>
-<h4 id="1-7：第七步：维护和修改代码"><a href="#1-7：第七步：维护和修改代码" class="headerlink" title="1.7：第七步：维护和修改代码"></a>1.7：第七步：维护和修改代码</h4><p>​    创建完程序后，你发现程序有错，或者想拓展程序的用途，这就时要修改程序。例如，用户以Zz开头的姓名时程序出现了错误，你想到了一个更好的解决方案、想添加一个更好的新特性，或者要修改程序使其能在不同的计算机系统中运行，等等。如果在编写程序时清楚地做了注释并采用了合理的设计方案，这些事情很就会变得简单。</p>
-<h4 id="1-8：第八步：说明"><a href="#1-8：第八步：说明" class="headerlink" title="1.8：第八步：说明"></a>1.8：第八步：说明</h4><p>​    编程并非像描述那样。有时，要在不同地步骤之间往复。例如，在写代码时发现之前设计不切实际，或者想到了一个更好地解决方案，或者等程序运行后，想改变原来地设计思路。对程序做文字注释为今后地修改提供了方便。</p>
-<p>​    许多初学者经常忽略第一步和第二步。直接跳到第三步。刚开始学习是，程序非常简单，可以在脑海中构造好思路，即使写错了，也很容易发现程序漏洞。但是随着编写地程序越来越庞大、越来越复杂、动脑不动手就行不通了，而且在程序中隐藏地错误也越来越难找。最终，跳过那两个步骤的人往往浪费了更多的时间，因为他们写出的程序很难看、缺乏条理、让人难以理解。要编写的程序越大越复杂，事先定义和设计程序环节的工作量就越大。</p>
-<p>​    磨刀不误砍柴工，应该养成先规划再动手编写代码的好习惯，用纸和笔记录下程序的目标和设计框架。这样在编写代码的过程中会更加得心应手、条理清晰。</p>
-<hr>
-<p>^1^ : VAX：是一种可支持机器语言和虚拟地址的32位小型计算机。</p>
-<p>​    VMS：是旧名，现在叫OpenVMS，是一种用于服务器的操作系统，可在VSX、Alpha或Itanium处理器系列平台上运行。  </p>
-
+        
+          <a class="article-more-a" href="/2020/07/05/20-7-5-C-Primir-Plus-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AC%94%E8%AE%B0/#more">more >></a>
+        
       
 
       
@@ -261,6 +249,9 @@
         
       </header>
     
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h4><p>上午：排序、查找算法</p>
@@ -276,6 +267,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -328,9 +330,15 @@
         
       </header>
     
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="创建blog的步骤"><a href="#创建blog的步骤" class="headerlink" title="创建blog的步骤"></a>创建blog的步骤</h2><h3 id="time-2020-7-3"><a href="#time-2020-7-3" class="headerlink" title="time:2020.7.3"></a>time:2020.7.3</h3><h3 id="根据B站codesheep保姆级手把手搭建博客教程的文字化"><a href="#根据B站codesheep保姆级手把手搭建博客教程的文字化" class="headerlink" title="根据B站codesheep保姆级手把手搭建博客教程的文字化"></a>根据B站codesheep保姆级手把手搭建博客教程的文字化</h3>
+        
+          <a class="article-more-a" href="/2020/07/03/%E5%88%9B%E5%BB%BAblog%E6%AD%A5%E9%AA%A4/#more">more >></a>
+        
       
 
       
@@ -390,11 +398,15 @@
         
       </header>
     
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         <p>第一篇博客<br>2020.7.3<br>数据结构倒数第二天<br>明天考试</p>
-<p>just for test</p>
-
+        
+          <a class="article-more-a" href="/2020/07/03/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/#more">more >></a>
+        
       
 
       
@@ -454,6 +466,9 @@
         
       </header>
     
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
@@ -605,6 +620,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">使用C语言的七个步骤</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
