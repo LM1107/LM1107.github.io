@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 使用C语言的七个步骤 | Hexo</title>
+  <title>C语言-整型相加溢出 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/%E4%BD%BF%E7%94%A8C%E8%AF%AD%E8%A8%80%E7%9A%84%E4%B8%83%E4%B8%AA%E6%AD%A5%E9%AA%A4/index.html">
+  <meta name="description" content="复习 思考，两个int型数据相加，如何解决溢出问题?  c语言中存在两类整数算术运算，有符号运算和无符号运算。在无符号运算里，没有了符号位，所以是没有溢出的概念的。所有的无符号运算都是以2的n次方为模。如果算术运算符的一个操作数是有符号数，另一个是无符号数，那么有符号数会被转换为无符号数(表示范围小的总是被转换为表示范围大的)，那么溢出也不会发生。  但是，当两个操作数都是有符号数时，溢出就有可能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言-整型相加溢出">
+<meta property="og:url" content="http://yoursite.com/2020/07/06/C%E8%AF%AD%E8%A8%80-%E6%95%B4%E5%9E%8B%E7%9B%B8%E5%8A%A0%E6%BA%A2%E5%87%BA/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="复习 思考，两个int型数据相加，如何解决溢出问题?  c语言中存在两类整数算术运算，有符号运算和无符号运算。在无符号运算里，没有了符号位，所以是没有溢出的概念的。所有的无符号运算都是以2的n次方为模。如果算术运算符的一个操作数是有符号数，另一个是无符号数，那么有符号数会被转换为无符号数(表示范围小的总是被转换为表示范围大的)，那么溢出也不会发生。  但是，当两个操作数都是有符号数时，溢出就有可能">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-06T11:21:49.000Z">
+<meta property="article:modified_time" content="2020-07-06T11:50:39.792Z">
 <meta property="article:author" content="LM1107">
+<meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,60 +155,225 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-C语言-整型相加溢出" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/05/20-7-5-C-Primir-Plus-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-07-05T08:35:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/05/20-7-5-C-Primir-Plus-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AC%94%E8%AE%B0/">20.7.5-C-Primir-Plus_第一章笔记</a>
+    <h1 class="article-title" itemprop="name">
+      C语言-整型相加溢出
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/07/06/C%E8%AF%AD%E8%A8%80-%E6%95%B4%E5%9E%8B%E7%9B%B8%E5%8A%A0%E6%BA%A2%E5%87%BA/" class="archive-article-date">
+  	<time datetime="2020-07-06T11:21:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h3><ul>
+<li><p>思考，两个int型数据相加，如何解决溢出问题?</p>
+<ul>
+<li><p>c语言中存在两类整数算术运算，有符号运算和无符号运算。在无符号运算里，没有了符号位，所以是没有溢出的概念的。所有的无符号运算都是以2的n次方为模。如果算术运算符的一个操作数是有符号数，另一个是无符号数，那么有符号数会被转换为无符号数(表示范围小的总是被转换为表示范围大的)，那么溢出也不会发生。</p>
+</li>
+<li><p>但是，当两个操作数都是有符号数时，溢出就有可能发生。而且溢出的结果是未定义的。当一个运算的结果发生溢出时，任何假设都是不安全的。</p>
+</li>
+<li><p>例如，假定a和b是两个非负的整型变量(有符号)，我们需要检查a+b是否溢出，一种想当然的方式是:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a + b &lt; <span class="number">0</span>)  <span class="comment">//判断出是否溢出。</span></span><br></pre></td></tr></table></figure>
+
+<p>实际上，在现实世界里，这并不能正常运行。当a+b确实发生溢出时，所有关于结果如何的假设均不可靠。比如，在某些机器的cpu，加法运算将设置一个内部寄存器为四种状态:正，负，零和溢出。在这种机器上，c编译器完全有理由实现以上的例子，使得a+b返回的不是负，而是这个内存寄存器的溢出状态。显然，if的判断会失败。</p>
+<a id="more"></a>
+</li>
+<li><p>一种正确的方式是将a和b都强制转换为无符号整数：</p>
+</li>
+<li><pre><code class="c"><span class="keyword">if</span> ( (<span class="keyword">unsigned</span>)a + (<span class="keyword">unsigned</span>)b  &gt; INT_MAX) <span class="comment">//正确判断是否溢出</span>
+&lt;!--￼<span class="number">1</span>--&gt;</code></pre>
+</li>
+<li><p>PS : 有符号数的最高位(31位)为符号位，最高位为0的时候，表示正，为1的时候表示负。运算时，符号位不参加运算，但是如果两个数相加，30位需要进1时，那么即表示溢出。</p>
+</li>
+<li><blockquote>
+<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/bichenggui/article/details/4734040" target="_blank" rel="noopener">https://blog.csdn.net/bichenggui/article/details/4734040</a><br>————————————————<br>版权声明：本文为CSDN博主「必成桂」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/bichenggui/article/details/4734040" target="_blank" rel="noopener">https://blog.csdn.net/bichenggui/article/details/4734040</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>扩展：如何判断整数数据溢出？</p>
+<ul>
+<li><p>对于C/C++语言来说，分为无符号整数和有符号整数两种，几乎在所有机器中他们都是用补码表示的，判断两个整数相加是否溢出的方法如下：</p>
+</li>
+<li><pre><code class="c"><span class="comment">//1.无符号整数相加,如果结果小于其中任何一个，则溢出</span>
+<span class="function"><span class="keyword">bool</span> <span class="title">IsOverFlow</span><span class="params">(<span class="keyword">unsigned</span> x, <span class="keyword">unsigned</span> y)</span></span>
+<span class="function"></span>{
+   <span class="keyword">unsigned</span> z = x + y;
+   <span class="keyword">if</span>(z &lt; x)
+      <span class="keyword">return</span> <span class="literal">true</span>;
+    <span class="keyword">return</span> <span class="literal">false</span>;
+}
+&lt;!--￼<span class="number">2</span>--&gt;</code></pre>
+</li>
+<li><pre><code class="c"><span class="comment">//3.如何判断一个输入或者转化转化的单个数字是否溢出</span>
+<span class="keyword">if</span>( num&gt;<span class="number">0x7fffffff</span> || num&lt;(<span class="keyword">signed</span> <span class="keyword">int</span>)<span class="number">0x80000000</span>)
+<span class="comment">//int类型的最大正数：0x7fffffff；</span>
+<span class="comment">//int类型的最小负数：0x80000000；</span></code></pre>
+</li>
+<li><blockquote>
+<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/gogoky/article/details/51758718" target="_blank" rel="noopener">https://blog.csdn.net/gogoky/article/details/51758718</a><br>————————————————<br>版权声明：本文为CSDN博主「戎·码一生」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/gogokongyin/article/details/51758718" target="_blank" rel="noopener">https://blog.csdn.net/gogokongyin/article/details/51758718</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">使用C语言的七个步骤</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/06/C%E8%AF%AD%E8%A8%80-%E6%95%B4%E5%9E%8B%E7%9B%B8%E5%8A%A0%E6%BA%A2%E5%87%BA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/07/06/markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">markdown语法笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-    
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -226,9 +396,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -296,7 +466,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">使用C语言的七个步骤</a>
+                <a href="javascript:void(0)" class="js-tag color4">C语言</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -309,6 +479,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">创建blog的步骤</a>
               </li>
             
             <div class="clearfix"></div>
