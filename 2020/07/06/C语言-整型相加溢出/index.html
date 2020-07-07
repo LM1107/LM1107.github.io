@@ -16,7 +16,7 @@
 <meta property="og:description" content="复习 思考，两个int型数据相加，如何解决溢出问题?  c语言中存在两类整数算术运算，有符号运算和无符号运算。在无符号运算里，没有了符号位，所以是没有溢出的概念的。所有的无符号运算都是以2的n次方为模。如果算术运算符的一个操作数是有符号数，另一个是无符号数，那么有符号数会被转换为无符号数(表示范围小的总是被转换为表示范围大的)，那么溢出也不会发生。  但是，当两个操作数都是有符号数时，溢出就有可能">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-06T11:21:49.000Z">
-<meta property="article:modified_time" content="2020-07-06T11:50:39.792Z">
+<meta property="article:modified_time" content="2020-07-07T00:59:01.053Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
@@ -192,10 +192,12 @@
 <a id="more"></a>
 </li>
 <li><p>一种正确的方式是将a和b都强制转换为无符号整数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( (<span class="keyword">unsigned</span>)a + (<span class="keyword">unsigned</span>)b  &gt; INT_MAX) <span class="comment">//正确判断是否溢出</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><pre><code class="c"><span class="keyword">if</span> ( (<span class="keyword">unsigned</span>)a + (<span class="keyword">unsigned</span>)b  &gt; INT_MAX) <span class="comment">//正确判断是否溢出</span>
-&lt;!--￼<span class="number">1</span>--&gt;</code></pre>
+<li><p>这里的int_max值为有符号整型的最大值。在一般的编译器里是一个预定义的常量。ANSI C在limits里定义了INT_MAX，值为-2的31次方-1-。</p>
 </li>
+<li><p>这里还有一种不需要用到无符号算数运算的另一种可行方法是：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; INT_MAX - b ) <span class="comment">//第二种正确判断是否溢出的方法</span></span><br></pre></td></tr></table></figure></li>
 <li><p>PS : 有符号数的最高位(31位)为符号位，最高位为0的时候，表示正，为1的时候表示负。运算时，符号位不参加运算，但是如果两个数相加，30位需要进1时，那么即表示溢出。</p>
 </li>
 <li><blockquote>
@@ -210,22 +212,11 @@
 <li><p>扩展：如何判断整数数据溢出？</p>
 <ul>
 <li><p>对于C/C++语言来说，分为无符号整数和有符号整数两种，几乎在所有机器中他们都是用补码表示的，判断两个整数相加是否溢出的方法如下：</p>
-</li>
-<li><pre><code class="c"><span class="comment">//1.无符号整数相加,如果结果小于其中任何一个，则溢出</span>
-<span class="function"><span class="keyword">bool</span> <span class="title">IsOverFlow</span><span class="params">(<span class="keyword">unsigned</span> x, <span class="keyword">unsigned</span> y)</span></span>
-<span class="function"></span>{
-   <span class="keyword">unsigned</span> z = x + y;
-   <span class="keyword">if</span>(z &lt; x)
-      <span class="keyword">return</span> <span class="literal">true</span>;
-    <span class="keyword">return</span> <span class="literal">false</span>;
-}
-&lt;!--￼<span class="number">2</span>--&gt;</code></pre>
-</li>
-<li><pre><code class="c"><span class="comment">//3.如何判断一个输入或者转化转化的单个数字是否溢出</span>
-<span class="keyword">if</span>( num&gt;<span class="number">0x7fffffff</span> || num&lt;(<span class="keyword">signed</span> <span class="keyword">int</span>)<span class="number">0x80000000</span>)
-<span class="comment">//int类型的最大正数：0x7fffffff；</span>
-<span class="comment">//int类型的最小负数：0x80000000；</span></code></pre>
-</li>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.无符号整数相加,如果结果小于其中任何一个，则溢出</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsOverFlow</span><span class="params">(<span class="keyword">unsigned</span> x, <span class="keyword">unsigned</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">unsigned</span> z = x + y;</span><br><span class="line">   <span class="keyword">if</span>(z &lt; x)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.有符号整数相加，比无符号的相对复杂一点儿：</span></span><br><span class="line"><span class="comment">//如果两个整数相加&lt;0，或者两个负数相加&gt;0，（负数在计算机中用补码表示）则溢出。</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsOverFlow</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> z = x + y;</span><br><span class="line">   <span class="keyword">if</span>(x &gt; <span class="number">0</span> &amp;&amp; y &gt; <span class="number">0</span> &amp;&amp; z &lt; <span class="number">0</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">   <span class="keyword">if</span>(x &lt; <span class="number">0</span> &amp;&amp; y &lt;  <span class="number">0</span> &amp;&amp; z &gt; <span class="number">0</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3.如何判断一个输入或者转化转化的单个数字是否溢出</span></span><br><span class="line"><span class="keyword">if</span>( num&gt;<span class="number">0x7fffffff</span> || num&lt;(<span class="keyword">signed</span> <span class="keyword">int</span>)<span class="number">0x80000000</span>)</span><br><span class="line"><span class="comment">//int类型的最大正数：0x7fffffff；</span></span><br><span class="line"><span class="comment">//int类型的最小负数：0x80000000；</span></span><br></pre></td></tr></table></figure></li>
 <li><blockquote>
 <p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/gogoky/article/details/51758718" target="_blank" rel="noopener">https://blog.csdn.net/gogoky/article/details/51758718</a><br>————————————————<br>版权声明：本文为CSDN博主「戎·码一生」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/gogokongyin/article/details/51758718" target="_blank" rel="noopener">https://blog.csdn.net/gogokongyin/article/details/51758718</a></p>
 </blockquote>
