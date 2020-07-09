@@ -259,9 +259,7 @@
 <li><p>但是，当两个操作数都是有符号数时，溢出就有可能发生。而且溢出的结果是未定义的。当一个运算的结果发生溢出时，任何假设都是不安全的。</p>
 </li>
 <li><p>例如，假定a和b是两个非负的整型变量(有符号)，我们需要检查a+b是否溢出，一种想当然的方式是:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a + b &lt; <span class="number">0</span>)  <span class="comment">//判断出是否溢出。</span></span><br></pre></td></tr></table></figure>
-
-<p>实际上，在现实世界里，这并不能正常运行。当a+b确实发生溢出时，所有关于结果如何的假设均不可靠。比如，在某些机器的cpu，加法运算将设置一个内部寄存器为四种状态:正，负，零和溢出。在这种机器上，c编译器完全有理由实现以上的例子，使得a+b返回的不是负，而是这个内存寄存器的溢出状态。显然，if的判断会失败。</p></li></ul></li></ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a + b &lt; <span class="number">0</span>)  <span class="comment">//判断出是否溢出。</span></span><br></pre></td></tr></table></figure></li></ul></li></ul>
         
           <a class="article-more-a" href="/2020/07/06/C%E8%AF%AD%E8%A8%80-%E6%95%B4%E5%9E%8B%E7%9B%B8%E5%8A%A0%E6%BA%A2%E5%87%BA/#more">more >></a>
         
@@ -422,10 +420,7 @@
         <h2 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h2><h3 id="“一切皆文件”-文件定义："><a href="#“一切皆文件”-文件定义：" class="headerlink" title="“一切皆文件” 文件定义："></a>“一切皆文件” 文件定义：</h3><p>​    文件：一组相关数据的有序集合。</p>
 <p>​    文件名：这个数据集合的名称。</p>
 <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="标准IO"><a href="#标准IO" class="headerlink" title="标准IO"></a>标准IO</h3><ul>
-<li><p>在系统调用之上再封装的内容，与操作系统无关，对底层做了屏蔽。</p>
-</li>
-<li><p>对于底层做了屏蔽，也就是说对于用户提供的接口一致。如数据结构课程中，先设计好.h文件，main程序和函数.c文件互不相关，只需要依照.h文件编写。</p>
-</li>
+<li>在系统调用之上再封装的内容，与操作系统无关，对底层做了屏蔽。</li>
 </ul>
         
           <a class="article-more-a" href="/2020/07/06/%E6%A0%87%E5%87%86IO1/#more">more >></a>
@@ -975,15 +970,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -991,11 +982,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
+                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">创建blog的步骤</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1003,7 +998,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">创建blog的步骤</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
             
             <div class="clearfix"></div>

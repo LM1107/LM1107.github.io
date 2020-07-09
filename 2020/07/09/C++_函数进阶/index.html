@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C++函数进阶 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="函数提高函数默认参数 在C++中，函数的形参列表中的形参是可以有默认值的。 语法：返回值类型 函数名 （参数 &#x3D; 默认值）{} 示例：  12345678910111213141516171819202122232425262728293031#include&lt;iostream&gt;using namespace std;&#x2F;&#x2F;函数默认参数&#x2F;&#x2F;如果我们自己传入数据，就用自己的数据，如果没有，">
+  <meta name="description" content="函数提高函数默认参数 在C++中，函数的形参列表中的形参是可以有默认值的。 语法：返回值类型 函数名 （参数 &#x3D; 默认值）{} 示例：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++函数进阶">
 <meta property="og:url" content="http://yoursite.com/2020/07/09/C++_%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="函数提高函数默认参数 在C++中，函数的形参列表中的形参是可以有默认值的。 语法：返回值类型 函数名 （参数 &#x3D; 默认值）{} 示例：  12345678910111213141516171819202122232425262728293031#include&lt;iostream&gt;using namespace std;&#x2F;&#x2F;函数默认参数&#x2F;&#x2F;如果我们自己传入数据，就用自己的数据，如果没有，">
+<meta property="og:description" content="函数提高函数默认参数 在C++中，函数的形参列表中的形参是可以有默认值的。 语法：返回值类型 函数名 （参数 &#x3D; 默认值）{} 示例：">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-09T08:41:16.000Z">
-<meta property="article:modified_time" content="2020-07-09T09:07:27.689Z">
+<meta property="article:modified_time" content="2020-07-09T11:31:24.584Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -183,9 +183,17 @@
 <li>语法：<code>返回值类型 函数名 （参数 = 默认值）{}</code></li>
 <li>示例：</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//函数默认参数</span></span><br><span class="line"><span class="comment">//如果我们自己传入数据，就用自己的数据，如果没有，那么用默认值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b = <span class="number">10</span>,<span class="keyword">int</span> c = <span class="number">10</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + c; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1.如果某个位置参数有默认值，那么从这个位置往后，从左向右，必须都有默认值。</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">int func2(int a = 10,int b ，int c )</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    return a + b + c;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//2.如果函数声明有默认值，函数实现的时候就不能有默认参数。</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">int fun2(int a = 10,int b = 10);</span></span><br><span class="line"><span class="comment">int fun2(int a = 10,int b = 10)</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    return a + b;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//cout&lt;&lt;func(10)&lt;&lt;endl;</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;func(<span class="number">10</span>,<span class="number">30</span>)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//以实参为准</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
-<h4 id="函数占位参数"><a href="#函数占位参数" class="headerlink" title="函数占位参数"></a>函数占位参数</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//函数默认参数</span></span><br><span class="line"><span class="comment">//如果我们自己传入数据，就用自己的数据，如果没有，那么用默认值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b = <span class="number">10</span>,<span class="keyword">int</span> c = <span class="number">10</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + c; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1.如果某个位置参数有默认值，那么从这个位置往后，从左向右，必须都有默认值。</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">int func2(int a = 10,int b ，int c )</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    return a + b + c;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//2.如果函数声明有默认值，函数实现的时候就不能有默认参数。</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">int fun2(int a = 10,int b = 10);</span></span><br><span class="line"><span class="comment">int fun2(int a = 10,int b = 10)</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    return a + b;</span></span><br><span class="line"><span class="comment">&#125;/</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//cout&lt;&lt;func(10)&lt;&lt;endl;</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;func(<span class="number">10</span>,<span class="number">30</span>)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//以实参为准</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="函数占位参数"><a href="#函数占位参数" class="headerlink" title="函数占位参数"></a>函数占位参数</h4><ul>
+<li>C++中函数的形参列表里可以有占位参数，用来做占位，调用函数时必须填补该位置</li>
+<li><strong>语法</strong>：<code>返回值类型 函数名 （数据类型）[]</code></li>
+<li>在现阶段函数的占位参数存在意义不大，但是在更高阶的C++编程中会用到该技术。</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//占位参数</span></span><br><span class="line"><span class="comment">//返回值类型 函数名（数据类型）()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//目前阶段的占位参数，还用不到，后面高阶学习会用上</span></span><br><span class="line"><span class="comment">//占位参数 还可以有默认参数</span></span><br><span class="line"><span class="comment">//void func(int a,int = 10)&#123;&#125; </span></span><br><span class="line"><span class="comment">//int main()&#123;fun(10)&#125;  不需要传第二个参数的值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"this is fun"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    func(<span class="number">10</span>,<span class="number">10</span>);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -417,15 +425,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -433,11 +437,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
+                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">创建blog的步骤</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -445,7 +453,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">创建blog的步骤</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
             
             <div class="clearfix"></div>

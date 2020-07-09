@@ -16,7 +16,7 @@
 <meta property="og:description" content="复习 思考，两个int型数据相加，如何解决溢出问题?  c语言中存在两类整数算术运算，有符号运算和无符号运算。在无符号运算里，没有了符号位，所以是没有溢出的概念的。所有的无符号运算都是以2的n次方为模。如果算术运算符的一个操作数是有符号数，另一个是无符号数，那么有符号数会被转换为无符号数(表示范围小的总是被转换为表示范围大的)，那么溢出也不会发生。  但是，当两个操作数都是有符号数时，溢出就有可能">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-06T11:21:49.000Z">
-<meta property="article:modified_time" content="2020-07-07T00:59:01.053Z">
+<meta property="article:modified_time" content="2020-07-09T11:33:09.195Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
@@ -188,8 +188,9 @@
 <li><p>例如，假定a和b是两个非负的整型变量(有符号)，我们需要检查a+b是否溢出，一种想当然的方式是:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a + b &lt; <span class="number">0</span>)  <span class="comment">//判断出是否溢出。</span></span><br></pre></td></tr></table></figure>
 
-<p>实际上，在现实世界里，这并不能正常运行。当a+b确实发生溢出时，所有关于结果如何的假设均不可靠。比如，在某些机器的cpu，加法运算将设置一个内部寄存器为四种状态:正，负，零和溢出。在这种机器上，c编译器完全有理由实现以上的例子，使得a+b返回的不是负，而是这个内存寄存器的溢出状态。显然，if的判断会失败。</p>
 <a id="more"></a>
+
+<p>实际上，在现实世界里，这并不能正常运行。当a+b确实发生溢出时，所有关于结果如何的假设均不可靠。比如，在某些机器的cpu，加法运算将设置一个内部寄存器为四种状态:正，负，零和溢出。在这种机器上，c编译器完全有理由实现以上的例子，使得a+b返回的不是负，而是这个内存寄存器的溢出状态。显然，if的判断会失败。</p>
 </li>
 <li><p>一种正确的方式是将a和b都强制转换为无符号整数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( (<span class="keyword">unsigned</span>)a + (<span class="keyword">unsigned</span>)b  &gt; INT_MAX) <span class="comment">//正确判断是否溢出</span></span><br></pre></td></tr></table></figure>
@@ -197,7 +198,8 @@
 <li><p>这里的int_max值为有符号整型的最大值。在一般的编译器里是一个预定义的常量。ANSI C在limits里定义了INT_MAX，值为-2的31次方-1-。</p>
 </li>
 <li><p>这里还有一种不需要用到无符号算数运算的另一种可行方法是：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; INT_MAX - b ) <span class="comment">//第二种正确判断是否溢出的方法</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; INT_MAX - b ) <span class="comment">//第二种正确判断是否溢出的方法</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>PS : 有符号数的最高位(31位)为符号位，最高位为0的时候，表示正，为1的时候表示负。运算时，符号位不参加运算，但是如果两个数相加，30位需要进1时，那么即表示溢出。</p>
 </li>
 <li><blockquote>
@@ -466,15 +468,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,11 +480,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
+                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">创建blog的步骤</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,7 +496,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">创建blog的步骤</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
             
             <div class="clearfix"></div>
