@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>线程1 | Hexo</title>
+  <title>进程1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线程信号量互斥锁条件变量pthread_detach()与pthread_join()的区别原子操作PV操作">
+  <meta name="description" content="进程笔记 使用while(1)循环时，一定要加一个sleep()函数，以减小cpu压力。  exec族函数 int execl(const char *path, const char *arg, … , (char  *) NULL);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线程1">
-<meta property="og:url" content="http://yoursite.com/2020/07/09/%E7%BA%BF%E7%A8%8B1/index.html">
+<meta property="og:title" content="进程1">
+<meta property="og:url" content="http://yoursite.com/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="线程信号量互斥锁条件变量pthread_detach()与pthread_join()的区别原子操作PV操作">
+<meta property="og:description" content="进程笔记 使用while(1)循环时，一定要加一个sleep()函数，以减小cpu压力。  exec族函数 int execl(const char *path, const char *arg, … , (char  *) NULL);">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-09T03:06:27.000Z">
-<meta property="article:modified_time" content="2020-07-09T06:08:41.953Z">
+<meta property="article:published_time" content="2020-07-08T03:27:15.000Z">
+<meta property="article:modified_time" content="2020-07-09T12:32:51.936Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="Linux高级">
 <meta name="twitter:card" content="summary">
@@ -155,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-线程1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux高级_进程1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      线程1
+      进程1
     </h1>
   
 
         
-        <a href="/2020/07/09/%E7%BA%BF%E7%A8%8B1/" class="archive-article-date">
-  	<time datetime="2020-07-09T03:06:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
+        <a href="/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B1/" class="archive-article-date">
+  	<time datetime="2020-07-08T03:27:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
         
       </header>
@@ -178,7 +178,50 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><h4 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h4><h4 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h4><h4 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h4><h4 id="pthread-detach-与pthread-join-的区别"><a href="#pthread-detach-与pthread-join-的区别" class="headerlink" title="pthread_detach()与pthread_join()的区别"></a>pthread_detach()与pthread_join()的区别</h4><h4 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h4><h4 id="PV操作"><a href="#PV操作" class="headerlink" title="PV操作"></a>PV操作</h4>
+        <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><h4 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h4><ul>
+<li>使用while(1)循环时，一定要加一个sleep()函数，以减小cpu压力。</li>
+</ul>
+<h4 id="exec族函数"><a href="#exec族函数" class="headerlink" title="exec族函数"></a>exec族函数</h4><ol>
+<li>int execl(const char *path, const char *arg, … , (char  *) NULL);</li>
+</ol>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ret = execl(<span class="string">"/bin/ls"</span>, <span class="string">"ls"</span>, <span class="string">"-l"</span>, <span class="literal">NULL</span>);</span><br><span class="line"><span class="comment">//第一个参数需要要执行的程序的绝对路径</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>int execlp(const char *file, const char *arg, … , (char  *) NULL);</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ret = execlp(<span class="string">"ls"</span>,<span class="string">"ls"</span>,<span class="string">"-l"</span>,<span class="literal">NULL</span>);</span><br><span class="line"><span class="comment">//第一个参数支持绝对路径与文件名，只不过兼容了file（相对路径）。</span></span><br><span class="line"><span class="comment">//加了p的这两个函数会首先去找file，如果找到则执行，</span></span><br><span class="line"><span class="comment">//如果没找到，则会去环境变量PATH所指定的目录下去找，</span></span><br><span class="line"><span class="comment">//如果找到则执行如果没找到则报错）</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>int execle(const char *path, const char , (char *) NULL, char * const envp[] );</li>
+<li>int execv(const char *path, char *const argv[]);</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> * <span class="keyword">const</span> arg[] = &#123;<span class="string">"ls"</span>,<span class="string">"-1"</span>,<span class="string">"-a"</span>,<span class="literal">NULL</span>&#125;;</span><br><span class="line">execv(<span class="string">"/bin/ls"</span>,arg);</span><br><span class="line"><span class="comment">//execl()与execv()这两个函数是最基本的exec，都可以用来执行一个程序，</span></span><br><span class="line"><span class="comment">//区别是传参的格式不同。</span></span><br><span class="line"><span class="comment">//execl是把参数列表（本质上是多个字符串，必须以NULL结尾）依次排列而成</span></span><br><span class="line"><span class="comment">//execl()的l其实就是list的缩写</span></span><br><span class="line"><span class="comment">//execv是把参数列表事先放入一个字符串数组中，再把这个字符串数组传给execv函数。</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>int execvp(const char *file, char *const argv[]);</li>
+<li>int execvpe(const char *file, char *const argv[], char *const envp[]);</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>实际上，真正的系统调用只有<strong>execve()</strong>，</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">execve</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *filename, <span class="keyword">char</span> *<span class="keyword">const</span> argv[], <span class="keyword">char</span> *<span class="keyword">const</span> envp[])</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在使用exec函数族时，一定要加上错误判断语句。exec很容易执行失败，其中最常见的原因如下：</p>
+<ul>
+<li>找不到文件或路径，此时errno被置为ENOENT</li>
+<li>数组argv与envp忘记用NULL结束，此时errno被置为EFAULT</li>
+<li>没有对应执行文件的执行权限，此时errno被置为EACCES</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>以上exec族函数转载于</p>
+<p>————————————————<br>版权声明：本文为CSDN博主「David_361」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/David_361/article/details/86057551" target="_blank" rel="noopener">https://blog.csdn.net/David_361/article/details/86057551</a></p>
+</blockquote>
+
       
 
       
@@ -268,7 +311,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/09/%E7%BA%BF%E7%A8%8B1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,18 +325,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/09/C++_%E5%BC%95%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/09/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          C++引用
+          进程2
         
       </div>
     </a>
   
   
-    <a href="/2020/07/09/C++_%E5%A0%86%E5%8C%BA%E6%93%8D%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C++堆区操作</div>
+    <a href="/2020/07/08/C_C++-%E5%86%85%E5%AD%98%E5%9B%9B%E5%8C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C_C++内存四区</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -419,10 +462,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -431,7 +470,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,11 +478,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
               </li>
              
               <li class="article-tag-list-item">

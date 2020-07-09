@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>文件IO2 | Hexo</title>
+  <title>标准IO1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文件I&#x2F;O文件描述符">
+  <meta name="description" content="day1“一切皆文件” 文件定义：​    文件：一组相关数据的有序集合。 ​    文件名：这个数据集合的名称。 IO标准IO 在系统调用之上再封装的内容，与操作系统无关，对底层做了屏蔽。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="文件IO2">
-<meta property="og:url" content="http://yoursite.com/2020/07/07/%E6%96%87%E4%BB%B6IO2/index.html">
+<meta property="og:title" content="标准IO1">
+<meta property="og:url" content="http://yoursite.com/2020/07/06/Linux%E9%AB%98%E7%BA%A7_%E6%A0%87%E5%87%86IO1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="文件I&#x2F;O文件描述符">
+<meta property="og:description" content="day1“一切皆文件” 文件定义：​    文件：一组相关数据的有序集合。 ​    文件名：这个数据集合的名称。 IO标准IO 在系统调用之上再封装的内容，与操作系统无关，对底层做了屏蔽。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-07T02:53:38.000Z">
-<meta property="article:modified_time" content="2020-07-09T03:08:39.529Z">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB2972d5cc0a09c6f9ca3ca464face957f?method=download&shareKey=7359c22cca4c80ced51df2d84e513d62">
+<meta property="article:published_time" content="2020-07-06T01:01:32.000Z">
+<meta property="article:modified_time" content="2020-07-09T11:33:26.535Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="Linux高级">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEB2972d5cc0a09c6f9ca3ca464face957f?method=download&shareKey=7359c22cca4c80ced51df2d84e513d62">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -155,30 +157,183 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-文件IO2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux高级_标准IO1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      文件IO2
+      标准IO1
     </h1>
   
 
         
-        <a href="/2020/07/07/%E6%96%87%E4%BB%B6IO2/" class="archive-article-date">
-  	<time datetime="2020-07-07T02:53:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
+        <a href="/2020/07/06/Linux%E9%AB%98%E7%BA%A7_%E6%A0%87%E5%87%86IO1/" class="archive-article-date">
+  	<time datetime="2020-07-06T01:01:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
 </a>
         
       </header>
     
     <!-- 目录内容 -->
     
+        <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+              <span class="btn-bg"></span>
+              <span class="btn-text">文章导航</span>
+              </p>
+    	<div id="toc-article" class="toc-article">
+    	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+    		<strong class="toc-title">文章目录</strong>
+               <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#day1"><span class="toc-number">1.</span> <span class="toc-text">day1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#“一切皆文件”-文件定义："><span class="toc-number">1.1.</span> <span class="toc-text">“一切皆文件” 文件定义：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO"><span class="toc-number">2.</span> <span class="toc-text">IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准IO"><span class="toc-number">2.1.</span> <span class="toc-text">标准IO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件IO-Linux系统下"><span class="toc-number">2.2.</span> <span class="toc-text">文件IO-Linux系统下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入输出"><span class="toc-number">3.</span> <span class="toc-text">输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件描述符"><span class="toc-number">3.1.</span> <span class="toc-text">文件描述符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误信息输出"><span class="toc-number">3.2.</span> <span class="toc-text">错误信息输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标准IO-1"><span class="toc-number">3.3.</span> <span class="toc-text">标准IO</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#fopen"><span class="toc-number">3.3.1.</span> <span class="toc-text">fopen()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fwrite-与fprintf-的区别"><span class="toc-number">3.3.2.</span> <span class="toc-text">fwrite()与fprintf()的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#延伸：ASCII文件与二进制文件的区别"><span class="toc-number">3.3.3.</span> <span class="toc-text">延伸：ASCII文件与二进制文件的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#书–笔记"><span class="toc-number">3.4.</span> <span class="toc-text">书–笔记</span></a></li></ol></li></ol>
+             </div>
+       <script type="text/javascript">
+    	function showToc(){
+    		var toc_article = document.getElementById("toc-article");
+    		var show_toc_btn = document.getElementById("show-toc-btn");
+    		toc_article.setAttribute("style","display:block");
+    		show_toc_btn.setAttribute("style","display:none");
+    		};
+    	function showBtn(){
+    		var toc_article = document.getElementById("toc-article");
+    		var show_toc_btn = document.getElementById("show-toc-btn");
+    		toc_article.setAttribute("style","display:none");
+    		show_toc_btn.setAttribute("style","display:block");
+    		};
+       </script>
+          
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="文件I-O"><a href="#文件I-O" class="headerlink" title="文件I/O"></a>文件I/O</h3><h4 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h4>
+        <h2 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h2><h3 id="“一切皆文件”-文件定义："><a href="#“一切皆文件”-文件定义：" class="headerlink" title="“一切皆文件” 文件定义："></a>“一切皆文件” 文件定义：</h3><p>​    文件：一组相关数据的有序集合。</p>
+<p>​    文件名：这个数据集合的名称。</p>
+<h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="标准IO"><a href="#标准IO" class="headerlink" title="标准IO"></a>标准IO</h3><ul>
+<li>在系统调用之上再封装的内容，与操作系统无关，对底层做了屏蔽。</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><p>对于底层做了屏蔽，也就是说对于用户提供的接口一致。如数据结构课程中，先设计好.h文件，main程序和函数.c文件互不相关，只需要依照.h文件编写。</p>
+</li>
+<li><p>需要进行跨平台操作的时候可以使用标准IO，文件IO不行。</p>
+</li>
+<li><p>通过FILE *进行访问 （FILE结构体）。</p>
+</li>
+</ul>
+<h3 id="文件IO-Linux系统下"><a href="#文件IO-Linux系统下" class="headerlink" title="文件IO-Linux系统下"></a>文件IO-Linux系统下</h3><ul>
+<li>通过文件描述符进行访问1 .</li>
+<li>LINUX下特有 系统调用</li>
+</ul>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><h3 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h3><ul>
+<li>进程中打开的文件的唯一标识。</li>
+<li>shell默认开启的三个文件描述符:<ul>
+<li>标准输入 0 stdin</li>
+<li>标准输出 1 stdout</li>
+<li>标准出错 2 stderr</li>
+</ul>
+</li>
+</ul>
+<h3 id="错误信息输出"><a href="#错误信息输出" class="headerlink" title="错误信息输出"></a>错误信息输出</h3><ul>
+<li>perror() 打印函数出错信息</li>
+</ul>
+<hr>
+<h3 id="标准IO-1"><a href="#标准IO-1" class="headerlink" title="标准IO"></a>标准IO</h3><h4 id="fopen"><a href="#fopen" class="headerlink" title="fopen()"></a>fopen()</h4><ul>
+<li><p>fopen()中形参还可以是b–以二进程的形式打开</p>
+</li>
+<li><p><strong>linux如何区分文本文件和二进制文件</strong></p>
+</li>
+</ul>
+<ol>
+<li>二进制文件<ul>
+<li>准确的说应该是非文本文件，因为文本文件也是以二进制代码存放的。</li>
+<li>二进制文件是包含计算机可读信息的文件，他还可以是可执行文件，使系统根据其中的指令完成某项工作。命令和程序都是以可执行的二进制文件方式存储。二进制文件没有行的长度限制，也可包含空字符。</li>
+</ul>
+</li>
+<li>文本文件<ul>
+<li>文本文件时包含用户可读信息的文件。这些文明以ASCII码方式存储，可显示和打印。文本文件的行不能包括空字符（即NULL），行的最大长度（包括换行符在内）也不能通过（LINE_MAX）所定义的字节数。不过文本文件中并不能限制使用除空字符外的控制字符或其他不可打印字符。<blockquote>
+<p>以上两个内容转载于<a href="https://www.cnblogs.com/Ph-one/p/6418603.html" target="_blank" rel="noopener">博主柒月</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>CR用符号’\r’表示, 十进制ASCII代码是13, 十六进制代码为0x0D   —&gt;<strong>回车</strong></li>
+<li>LF使用’\n’符号表示, ASCII代码是10, 十六制为0x0A   —&gt; <strong>换行</strong></li>
+</ul>
+<h4 id="fwrite-与fprintf-的区别"><a href="#fwrite-与fprintf-的区别" class="headerlink" title="fwrite()与fprintf()的区别"></a>fwrite()与fprintf()的区别</h4><ul>
+<li><p>C语言把文件看作一个字符（字节）的序列，即由一个一个字符（字节）的数据组成。根据数据的组织形式，可分为ASCII文件和二进制文件。ASCII文件又称为文本(text)文件，它的每个字节放一个ascii代码，代表一个字符。二进制文件是把内存中的数据按其在内存中的存储形式原样输出到磁盘上存放。</p>
+</li>
+<li><p>一句话表述：<strong>fwrite是将数据不经转换直接以二进制的形式写入文件，而fprintf是将数据转换为字符后再写入文件</strong>。</p>
+<p>这样就导致：</p>
+<ul>
+<li><p>当使用fwrite将一个int型数字65写入文本文件时，由于65对应的二进制数是1000001，十六进制数是0x41，存储的是以二进制的形式1000001.在notepad++中使用十六进制方式打开显示的是:0x0041，转换为十进制则为65，使用记事本打开这个文本文件后显示的是A，因为记事本程序默认为存储在文本文件中的数据都是ASCII码形式存储，它把65当做ASCII码翻译为字符A。</p>
+</li>
+<li><p>当使用fpintf将一个int型数字65写入文本文件时，将65每一位转换为ASCII码存储，6、5分别对应ASCII码54、53，存储的是ASCII码54、53.在notepad++中使用十六进制方式打开显示的是:3635，转换为十进制则为54、53，这正是数字6、5的ASCII码。使用记事本打开这个文本文件时，记事本将存储在其中的54、53当做ASCII码翻译为字符6、5显示，我们看到的是便是字符65。</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://blog.csdn.net/guanyasu/article/details/53313985?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase" target="_blank" rel="noopener">转载于CSDN博主</a></p>
+</blockquote>
+<h4 id="延伸：ASCII文件与二进制文件的区别"><a href="#延伸：ASCII文件与二进制文件的区别" class="headerlink" title="延伸：ASCII文件与二进制文件的区别"></a>延伸：ASCII文件与二进制文件的区别</h4><ol>
+<li><p>存储形式</p>
+<ul>
+<li>二进制文件是按该数据类型<strong>在内存中的存储形式</strong>存储的；</li>
+<li>文本文件则是将该数据类型转换为<strong>可在屏幕上显示的形式</strong>存储的；</li>
+</ul>
+</li>
+<li><p>存储空间</p>
+<ul>
+<li>ASCII存储方式所占<strong>空间较多</strong>且所占空间大小与数值大小有关；</li>
+</ul>
+</li>
+<li><p>读写时间</p>
+<ul>
+<li>ASCII码文件在<em>外存上以ASCII码存放</em>，而在<em>内存中的数据都是以二进制存放</em>，因此当进行文件读写时要进行转换，造成<strong>存取数据较慢</strong>；</li>
+<li>二进制文件的数据是按其在内存中的存储形式在外存上存放的，不需转换，所以<strong>存取速度较快</strong></li>
+</ul>
+</li>
+<li><p>作用</p>
+<ul>
+<li><p>ASCII文件可通过编辑程序，如edit、记事本等，进行建立和修改，也可以通过DOS中的TYPE命令显示出来，因而ASCII码文件通常用于<strong>存放输入数据及程序的最终结果</strong>；</p>
+</li>
+<li><p>二进制文件不能显示出来，所以用于<strong>暂存程序的中间结果，供另一段程序读取</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>转载自<a href="https://blog.csdn.net/qiao_xi/article/details/90047925" target="_blank" rel="noopener">CSDN博主</a></p>
+</blockquote>
+<hr>
+<h3 id="书–笔记"><a href="#书–笔记" class="headerlink" title="书–笔记"></a>书–笔记</h3><ul>
+<li><p>用户程序编程接口-也就是API，通俗的解释就是各种库（最重要的就是C库）中的函数。</p>
+<ul>
+<li>是同用户程序编程接口还有一个好处：程序具有良好的可移植性。几乎所有的操作系统上都实现了C库，所以程序通常只需要重新编译一下就可以在其他操作系统下运行。</li>
+</ul>
+</li>
+<li><p>如果程序中使用的是标准I/O函数，那么源代码不需要修改就可以在其他操作系统下编译运行，具有更好的可移植性。</p>
+<ul>
+<li>除此之外使用标准I/O可以减少系统调用的次数，提高系统效率，因为缓冲区的出现，读写时先操作缓冲区在合适的时机再通过系统调用访问实际的文件，从而减少了系统调用的次数。</li>
+</ul>
+</li>
+<li><p>标准I/O中的缓冲类型有3种</p>
+<ul>
+<li>全缓冲。对于存放再磁盘上的普通文件，用标准I/O打开时默认都是全缓冲</li>
+<li>行缓冲。标准输入、标注输出流就是使用行缓冲的典型例子。</li>
+<li>无缓冲。标准出错流是不带缓冲的，这样就可以使出错信息立刻显示再终端上。</li>
+</ul>
+</li>
+<li><p>FILE <em>fopen(const char \</em>path,const char *mode);</p>
+<ul>
+<li>mode文件的打开方式，在每个选项中加入b字符用来告诉函数库打开的文件为二进制文件，而非纯文本文件。不过再Linux系统中会忽略该符号。</li>
+</ul>
+</li>
+<li><p>foepn()后必须有fclose()，因为<img src="https://note.youdao.com/yws/api/personal/file/WEB2972d5cc0a09c6f9ca3ca464face957f?method=download&shareKey=7359c22cca4c80ced51df2d84e513d62" alt="3.png"></p>
+</li>
+</ul>
+
       
 
       
@@ -268,7 +423,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/07/%E6%96%87%E4%BB%B6IO2/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/06/Linux%E9%AB%98%E7%BA%A7_%E6%A0%87%E5%87%86IO1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,18 +437,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/07/C%E8%AF%AD%E8%A8%80-%E5%AD%97%E8%8A%82%E5%BA%8F-%E5%A4%A7%E7%AB%AF%E5%BA%8F%E5%B0%8F%E7%AB%AF%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/06/markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          字节序_大端序小端序
+          markdown语法笔记
         
       </div>
     </a>
   
   
-    <a href="/2020/07/06/C%E8%AF%AD%E8%A8%80-%E6%95%B4%E5%9E%8B%E7%9B%B8%E5%8A%A0%E6%BA%A2%E5%87%BA/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C语言-整型相加溢出</div>
+    <a href="/2020/07/05/C-Primir-Plus-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C-Primir-Plus_第一章笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -312,6 +467,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#day1"><span class="toc-number">1.</span> <span class="toc-text">day1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#“一切皆文件”-文件定义："><span class="toc-number">1.1.</span> <span class="toc-text">“一切皆文件” 文件定义：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO"><span class="toc-number">2.</span> <span class="toc-text">IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准IO"><span class="toc-number">2.1.</span> <span class="toc-text">标准IO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件IO-Linux系统下"><span class="toc-number">2.2.</span> <span class="toc-text">文件IO-Linux系统下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入输出"><span class="toc-number">3.</span> <span class="toc-text">输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件描述符"><span class="toc-number">3.1.</span> <span class="toc-text">文件描述符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误信息输出"><span class="toc-number">3.2.</span> <span class="toc-text">错误信息输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标准IO-1"><span class="toc-number">3.3.</span> <span class="toc-text">标准IO</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#fopen"><span class="toc-number">3.3.1.</span> <span class="toc-text">fopen()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fwrite-与fprintf-的区别"><span class="toc-number">3.3.2.</span> <span class="toc-text">fwrite()与fprintf()的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#延伸：ASCII文件与二进制文件的区别"><span class="toc-number">3.3.3.</span> <span class="toc-text">延伸：ASCII文件与二进制文件的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#书–笔记"><span class="toc-number">3.4.</span> <span class="toc-text">书–笔记</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -419,10 +587,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -431,7 +595,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,11 +603,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux高级</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
               </li>
              
               <li class="article-tag-list-item">
