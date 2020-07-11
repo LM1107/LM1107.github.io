@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 牛客错题集 | Hexo</title>
+  <title>C语言-sscanf()和fscanf() | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/%E7%89%9B%E5%AE%A2%E9%94%99%E9%A2%98%E9%9B%86/index.html">
+  <meta name="description" content="fscanf()函数原型12#include &lt;stdio.h&gt;int fscanf(FILE *stream, const char *format, ...);   fscanf()是从流 stream 读取格式化输入。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言-sscanf()和fscanf()">
+<meta property="og:url" content="http://yoursite.com/2020/07/11/C%E8%AF%AD%E8%A8%80-sscanf-%E5%92%8Cfscanf/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="fscanf()函数原型12#include &lt;stdio.h&gt;int fscanf(FILE *stream, const char *format, ...);   fscanf()是从流 stream 读取格式化输入。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-11T07:48:23.000Z">
+<meta property="article:modified_time" content="2020-07-11T08:39:23.424Z">
 <meta property="article:author" content="LM1107">
+<meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,60 +155,230 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-C语言-sscanf-和fscanf" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/07/%E7%89%9B%E5%AE%A2%E9%94%99%E9%A2%98%E9%9B%86_1/" class="archive-article-date">
-  	<time datetime="2020-07-07T05:55:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/07/%E7%89%9B%E5%AE%A2%E9%94%99%E9%A2%98%E9%9B%86_1/">牛客错题集1</a>
+    <h1 class="article-title" itemprop="name">
+      C语言-sscanf()和fscanf()
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/07/11/C%E8%AF%AD%E8%A8%80-sscanf-%E5%92%8Cfscanf/" class="archive-article-date">
+  	<time datetime="2020-07-11T07:48:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="fscanf"><a href="#fscanf" class="headerlink" title="fscanf()"></a>fscanf()</h3><h4 id="函数原型"><a href="#函数原型" class="headerlink" title="函数原型"></a>函数原型</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fscanf</span><span class="params">(FILE *stream, <span class="keyword">const</span> <span class="keyword">char</span> *format, ...)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>fscanf()是从流 stream 读取格式化输入。</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><strong>stream</strong> – 这是指向 FILE 对象的指针，该 FILE 对象标识了流。</li>
+<li><strong>format</strong> – 这是 C 字符串，包含了以下各项中的一个或多个：<strong>空格字符</strong>、<strong>非空格字符</strong> 和 <strong>format 说明符</strong>。<ul>
+<li>format 说明符形式为 <strong>[= %[*] [width] [modifiers] type=]</strong></li>
+<li>暂时只用了解 %[*]</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>这是一个可选的星号，表示数据是从流 stream 中读取的，但是可以被忽视，即它不存储在对应的参数中。</td>
+</tr>
+</tbody></table>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line">    <span class="keyword">char</span> date[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> place[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> time[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> person[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> action[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    FILE *fp;</span><br><span class="line">    fp = fopen(<span class="string">"file.txt"</span>,<span class="string">"w+"</span>);</span><br><span class="line">    <span class="built_in">fputs</span>(<span class="string">"2020-7-10 chengdu Sat lm study"</span>, fp);</span><br><span class="line">    </span><br><span class="line">    rewind(fp);</span><br><span class="line">    <span class="built_in">fscanf</span>(fp, <span class="string">"%[^\t]%*[\t]%[^\t]%*[\t]%[^\t]%*[\t]%[^\t]%*[\t]%[^\r\n]"</span>,date,place,time,person,action);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s %s %s %s %s\n"</span>,date,place,time,person,action);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">char</span> str1[<span class="number">10</span>], str2[<span class="number">10</span>], str3[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">int</span> year;</span><br><span class="line">    FILE * fp;</span><br><span class="line"></span><br><span class="line">    fp = fopen (<span class="string">"file.txt"</span>, <span class="string">"w+"</span>);</span><br><span class="line">    <span class="built_in">fputs</span>(<span class="string">"We are in 2014"</span>, fp);</span><br><span class="line">    </span><br><span class="line">    rewind(fp); <span class="comment">//至关重要的一步，没有重新定位文件位置的话，无法读到实际数据</span></span><br><span class="line">    <span class="built_in">fscanf</span>(fp, <span class="string">"%s %s %s %d"</span>, str1, str2, str3, &amp;year);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Read String1 |%s|\n"</span>, str1 );</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Read String2 |%s|\n"</span>, str2 );</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Read String3 |%s|\n"</span>, str3 );</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Read Integer |%d|\n"</span>, year );</span><br><span class="line"></span><br><span class="line">    fclose(fp);</span><br><span class="line">    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*输出结果</span></span><br><span class="line"><span class="comment">第一个：</span></span><br><span class="line"><span class="comment">2020-7-10 chengdu Sat lm study</span></span><br><span class="line"><span class="comment">第二个：</span></span><br><span class="line"><span class="comment">Read String1 |We|</span></span><br><span class="line"><span class="comment">Read String2 |are|</span></span><br><span class="line"><span class="comment">Read String3 |in|</span></span><br><span class="line"><span class="comment">Read Integer |2014|</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="sscanf"><a href="#sscanf" class="headerlink" title="sscanf()"></a>sscanf()</h3><h4 id="函数原型-1"><a href="#函数原型-1" class="headerlink" title="函数原型"></a>函数原型</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sscanf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str, <span class="keyword">const</span> <span class="keyword">char</span> *format, ...)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>str</strong> – 这是 C 字符串，是函数检索数据的源。</li>
+<li><strong>format</strong> – 这是 C 字符串，包含了以下各项中的一个或多个：<strong>空格字符</strong>、<strong>非空格字符</strong> 和 <strong>format 说明符</strong>。<ul>
+<li><strong>format说明表请往上翻。</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line">    <span class="keyword">char</span> <span class="built_in">line</span>[<span class="number">128</span>] = <span class="string">"2020-7-10 chengdu Sat lm study"</span>;</span><br><span class="line">    <span class="keyword">char</span> date[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> place[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> time[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> person[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> action[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sscanf</span> ( <span class="built_in">line</span>, <span class="string">"%[^\t]%*[\t]%[^\t]%*[\t]%[^\t]%*[\t]%[^\t]%*[\t]%[^\r\n]"</span>,date,place,time,person,action);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s %s %s %s %s\n"</span>,date,place,time,person,action);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">int</span> day, year;</span><br><span class="line">    <span class="keyword">char</span> weekday[<span class="number">20</span>], month[<span class="number">20</span>], dtm[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">strcpy</span>(dtm, <span class="string">"Saturday March 25 1989"</span> );</span><br><span class="line">    <span class="built_in">sscanf</span>(dtm, <span class="string">"%s %s %d  %d"</span>, weekday, month, &amp;day, &amp;year );</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s %d, %d = %s\n"</span>, month, day, year, weekday );</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*输出结果</span></span><br><span class="line"><span class="comment">第一个：</span></span><br><span class="line"><span class="comment">2020-7-10 chengdu Sat lm study </span></span><br><span class="line"><span class="comment">第二个：</span></span><br><span class="line"><span class="comment">March 25, 1989 = Saturday</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>在fscanf()和sscanf()用到的两个示例代码中，都出现了 %[^\t]%*[\t]，先说%[^\t]：<ul>
+<li>一个字符指针 p 指向 line 的第一个字符 ‘2’ ，那么如何让 ‘2’ , ‘0’ , ‘2’ , ‘0’ , ‘-‘ , ‘7’ , ‘-‘ , ‘1’ , ‘0’ 依次通过筛选，在分隔符 ‘\t’ 处停止 ？ 于是我们回忆正则表达式的写法，应该是 %[^\t] ，其中[^\t]表示所有 非’\t’ 字符的字符集合, %表示通过筛选，这个地方是关键，要注意理解。</li>
+</ul>
+</li>
+<li>接下来，再说*[\t]<ul>
+<li>我们可以想象，字符指针 p 指向了 ‘3’ 和 ‘北’ 之间的分隔符 ‘\t’ ，很显然嘛，我们要过滤掉这个分隔符，于是我们这么写 %*[\t] ，%*的意思就是“过滤掉，丢弃”，[\t] 好理解，就是指的分隔符 ‘\t’ ，这样的话，分隔符就被我们无情地丢弃掉了。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>参考于<a href="https://blog.csdn.net/yangguangqizhi/article/details/52809367" target="_blank" rel="noopener">CSDN博主</a></p>
+<p>————————————————<br>版权声明：本文为CSDN博主「一米阳光213」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/yangguangqizhi/article/details/52809367" target="_blank" rel="noopener">https://blog.csdn.net/yangguangqizhi/article/details/52809367</a></p>
+</blockquote>
+<ul>
+<li>fscanf()与sscanf()很明显的一个区别就是fscanf()用于文件之间的操作，sscanf()分情况。</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">牛客错题集</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/11/C%E8%AF%AD%E8%A8%80-sscanf-%E5%92%8Cfscanf/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/07/11/C%E8%AF%AD%E8%A8%80-scanf-%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C语言-scanf()输入格式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-    
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -226,9 +401,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
