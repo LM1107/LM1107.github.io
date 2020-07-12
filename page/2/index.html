@@ -152,19 +152,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Linux高级_进程1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linux高级_进程2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B1/">进程1</a>
+      <a class="article-title" href="/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B2/">进程2</a>
     </h1>
   
 
         
-        <a href="/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B1/" class="archive-article-date">
+        <a href="/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B2/" class="archive-article-date">
   	<time datetime="2020-07-08T03:27:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
         
@@ -178,12 +178,8 @@
         <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><h4 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h4><ul>
 <li>使用while(1)循环时，一定要加一个sleep()函数，以减小cpu压力。</li>
 </ul>
-<h4 id="exec族函数"><a href="#exec族函数" class="headerlink" title="exec族函数"></a>exec族函数</h4><ol>
-<li>int execl(const char *path, const char *arg, … , (char  *) NULL);</li>
-</ol>
-        
-          <a class="article-more-a" href="/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B1/#more">more >></a>
-        
+<hr>
+<h4 id="waitpid-–-轮询"><a href="#waitpid-–-轮询" class="headerlink" title="waitpid() – 轮询"></a>waitpid() – 轮询</h4><h4 id="杀死一个僵尸进程"><a href="#杀死一个僵尸进程" class="headerlink" title="杀死一个僵尸进程"></a>杀死一个僵尸进程</h4>
       
 
       
@@ -206,7 +202,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B1/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B2/">展开全文 >></a>
         </p>
       
 
@@ -259,7 +255,7 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="内存四区"><a href="#内存四区" class="headerlink" title="内存四区"></a>内存四区</h3><h4 id="程序运行前"><a href="#程序运行前" class="headerlink" title="程序运行前"></a>程序运行前</h4><h4 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h4><ul>
+        <h3 id="1-内存四区"><a href="#1-内存四区" class="headerlink" title="1.内存四区"></a>1.内存四区</h3><h4 id="程序运行前"><a href="#程序运行前" class="headerlink" title="程序运行前"></a>程序运行前</h4><h4 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h4><ul>
 <li>存放CPU执行的机器指令(即101010001之类二进制)。</li>
 <li>代码区是<strong>共享</strong>的，共享的目的是对于频繁被执行的程序，只需要在内存中有一份代码即可。</li>
 <li>代码区是<strong>只读</strong>的，使其只读的原因是防止程序意外地修改了它的指令。</li>
@@ -342,6 +338,11 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
+        <h3 id="1-自加运算符"><a href="#1-自加运算符" class="headerlink" title="1.自加运算符 ++"></a>1.自加运算符 ++</h3><ul>
+<li>题目如下:</li>
+</ul>
+        
+          <a class="article-more-a" href="/2020/07/07/%E7%89%9B%E5%AE%A2%E9%94%99%E9%A2%98%E9%9B%86_1/#more">more >></a>
         
       
 
@@ -1086,11 +1087,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+                <a href="javascript:void(0)" class="js-tag color5">创建blog的步骤</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">创建blog的步骤</a>
+                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1098,11 +1099,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+                <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
             
             <div class="clearfix"></div>
