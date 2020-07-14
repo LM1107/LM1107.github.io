@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 网络编程 | Hexo</title>
+  <title>操作系统1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/index.html">
+  <meta name="description" content="原子操作定义： 原子操作（atomic operation）指的是由多步操作组成的一个操作。如果该操作不能原子地执行，则要么执行完所有步骤，要么一步也不执行，不可能只执行所有步骤的一个子集。 现代操作系统中，一般都提供了原子操作来实现一些同步操作，所谓原子操作，也就是一个独立而不可分割的操作。   临界资源定义： 在同一个时刻只允许有限个（通常只有一个）任务可以访问（读）或修改（写）的资源。 各进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统1">
+<meta property="og:url" content="http://yoursite.com/2020/07/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="原子操作定义： 原子操作（atomic operation）指的是由多步操作组成的一个操作。如果该操作不能原子地执行，则要么执行完所有步骤，要么一步也不执行，不可能只执行所有步骤的一个子集。 现代操作系统中，一般都提供了原子操作来实现一些同步操作，所谓原子操作，也就是一个独立而不可分割的操作。   临界资源定义： 在同一个时刻只允许有限个（通常只有一个）任务可以访问（读）或修改（写）的资源。 各进">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-13T03:27:27.000Z">
+<meta property="article:modified_time" content="2020-07-13T12:27:16.925Z">
 <meta property="article:author" content="LM1107">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,60 +155,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-操作系统1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/09/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E6%B1%A01/" class="archive-article-date">
-  	<time datetime="2020-07-09T05:32:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/09/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E6%B1%A01/">线程池</a>
+    <h1 class="article-title" itemprop="name">
+      操作系统1
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/07/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F1/" class="archive-article-date">
+  	<time datetime="2020-07-13T03:27:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h3><h4 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h4><ul>
+<li>原子操作（atomic operation）指的是由多步操作组成的一个操作。如果该操作不能原子地执行，则要么执行完所有步骤，要么一步也不执行，不可能只执行所有步骤的一个子集。</li>
+<li>现代操作系统中，一般都提供了原子操作来实现一些同步操作，<strong>所谓原子操作，也就是一个独立而不可分割的操作</strong>。</li>
+</ul>
+<hr>
+<h3 id="临界资源"><a href="#临界资源" class="headerlink" title="临界资源"></a>临界资源</h3><h4 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h4><ul>
+<li>在同一个时刻只允许有限个（通常只有一个）任务可以访问（读）或修改（写）的资源。</li>
+<li>各进程采取互斥的方式，实现共享的资源称作临界资源。</li>
+</ul>
+<h4 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h4><ul>
+<li>属于临界资源的<strong>硬件</strong>有打印机、磁带机等；</li>
+<li><strong>软件</strong>有消息缓冲队列、变量、数组、缓冲区等。</li>
+</ul>
+<h4 id="临界区："><a href="#临界区：" class="headerlink" title="临界区："></a>临界区：</h4><ul>
+<li><strong>定义：</strong>每个进程中访问临界资源的那段代码称为临界区。</li>
+</ul>
+<hr>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h4 id="定义：-2"><a href="#定义：-2" class="headerlink" title="定义："></a>定义：</h4><ul>
+<li>所谓死锁，是指多个进程在运行过程中因争夺资源而造成的一种僵局，当进程处于这种僵持状态时，若无外力作用，它们都将无法再向前推进。 </li>
+</ul>
+<h4 id="避免死锁的方法："><a href="#避免死锁的方法：" class="headerlink" title="避免死锁的方法："></a>避免死锁的方法：</h4><hr>
+<h3 id="PCB"><a href="#PCB" class="headerlink" title="PCB"></a>PCB</h3>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络编程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/07/11/C%E8%AF%AD%E8%A8%80-sscanf-%E5%92%8Cfscanf/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C语言-sscanf()和fscanf()</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-    
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -226,9 +361,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -324,7 +459,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
             
             <div class="clearfix"></div>

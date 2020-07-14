@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>进程2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="进程笔记 使用while(1)循环时，一定要加一个sleep()函数，以减小cpu压力。   waitpid() – 轮询杀死一个僵尸进程">
+  <meta name="description" content="进程笔记 使用while(1)循环时，一定要加一个sleep()函数，以减小cpu压力。   1.Linux下的进程结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进程2">
 <meta property="og:url" content="http://yoursite.com/2020/07/08/Linux%E9%AB%98%E7%BA%A7_%E8%BF%9B%E7%A8%8B2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="进程笔记 使用while(1)循环时，一定要加一个sleep()函数，以减小cpu压力。   waitpid() – 轮询杀死一个僵尸进程">
+<meta property="og:description" content="进程笔记 使用while(1)循环时，一定要加一个sleep()函数，以减小cpu压力。   1.Linux下的进程结构">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-08T03:27:15.000Z">
-<meta property="article:modified_time" content="2020-07-12T05:07:17.871Z">
+<meta property="article:modified_time" content="2020-07-12T08:34:13.828Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="Linux高级">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,91 @@
 <li>使用while(1)循环时，一定要加一个sleep()函数，以减小cpu压力。</li>
 </ul>
 <hr>
-<h4 id="waitpid-–-轮询"><a href="#waitpid-–-轮询" class="headerlink" title="waitpid() – 轮询"></a>waitpid() – 轮询</h4><h4 id="杀死一个僵尸进程"><a href="#杀死一个僵尸进程" class="headerlink" title="杀死一个僵尸进程"></a>杀死一个僵尸进程</h4>
+<h4 id="1-Linux下的进程结构"><a href="#1-Linux下的进程结构" class="headerlink" title="1.Linux下的进程结构"></a>1.Linux下的进程结构</h4><a id="more"></a>
+
+<ul>
+<li><p>进程不但包括<strong>程序的指令和数据</strong>，还包括<strong>程序计数器(PC)</strong>和<strong>处理器的所有寄存器</strong>以及<strong>存储临时数据的进程堆栈</strong>。</p>
+<ul>
+<li><p>程序计数器，Program Counter，简称为PC，是用于存放下一条指令所在单元的地址的地方。</p>
+<p>程序计数器是计算机处理器中的寄存器，它包含当前正在执行的指令的地址（位置）。执行一条指令时，首先需要根据PC中存放的指令地址，将指令由内存取到指令寄存器中，此过程称为“取指令”。与此同时，PC中的地址或自动加1或由转移指针给出下一条指令的地址。此后经过分析指令，执行指令；完成第一条指令的执行，而后根据PC取出第二条指令的地址；如此循环，执行每一条指令。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-waitpid-–-轮询"><a href="#2-waitpid-–-轮询" class="headerlink" title="2.waitpid() – 轮询"></a>2.waitpid() – 轮询</h4><ol>
+<li><p><strong>waitpid 和 wait 的函数原型</strong></p>
+<p>p.s.实际上wait()函数只是waitpid()的一个特例，在Linux内部实现wait()函数时直接调用的就是waitpid()函数。</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//wait()函数原型</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">pid_t</span> <span class="title">wait</span><span class="params">(<span class="keyword">int</span> *status)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数：<strong>status</strong>：指向的整数对象用来保存子进程结束时的状态。</li>
+<li>返回值：成功，返回已回收的子进程的进程号；失败，返回-1。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//waitpid()函数原型</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">pid_t</span> <span class="title">waitpid</span><span class="params">(<span class="keyword">pid_t</span> pid,<span class="keyword">int</span> *status,<span class="keyword">int</span> options)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>参数：<strong>pid</strong>：</p>
+<ul>
+<li><strong>pid &gt; 0</strong>: 回收进程ID等于pid的子进程；</li>
+<li><strong>pid = -1</strong>:回收任意一个子进程，此时和wait()作用一样；</li>
+<li><strong>pid = 0</strong>:回收其组ID等于调用进程的组ID的任一子进程；</li>
+<li><strong>pid &lt; -1</strong>:回收其组ID等于pid的绝对值的任一子进程。</li>
+</ul>
+</li>
+<li><p><strong>options:</strong></p>
+<ul>
+<li><strong>WNOHANG</strong>:若指定的子进程没有结束，则waitpid()不阻塞立即返回，此时返回值为0；</li>
+<li><strong>WUNTRACED</strong>:为了实现某种操作，由pid指定的任一子进程已被暂停，且其状态自暂停以来还未报告过，则返回其状态。</li>
+<li><strong>0</strong>:同wait()，阻塞父进程，直到指定的子进程退出。</li>
+</ul>
+</li>
+<li><p><strong>status</strong>：</p>
+<ul>
+<li>参数status如果不是一个空指针,则终止进程的终止状态就存放在status所指向的单元。</li>
+<li>参数status如果是一个空指针,则表示父进程不关心子进程的终止状态。</li>
+</ul>
+</li>
+<li><p><strong>返回值</strong>：</p>
+<ul>
+<li><strong>&gt;0</strong>：已经结束运行的子进程的进程号；</li>
+<li><strong>0</strong>：使用选项<strong>WNOHANG</strong>且没有子进程退出；</li>
+<li><strong>-1</strong>：出错。</li>
+</ul>
+</li>
+<li><p>令waitpid()以阻塞类似于wait()的方式使用–<strong>wait(status) = waitpid(-1,&amp;status,0)</strong>：</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> status;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello\n"</span>);</span><br><span class="line">    <span class="keyword">pid_t</span> pid = fork();</span><br><span class="line">    <span class="keyword">if</span>(pid &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"fork"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(pid == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"BYE\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(waitpid(<span class="number">-1</span>,&amp;status,<span class="number">0</span>) &gt; <span class="number">0</span>)  <span class="comment">//wait(status) = waitpid(-1,&amp;status,0)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(WIFEXITED(status)!=<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,WEXITSTATUS(status));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印结果：</span></span><br><span class="line">HELLO</span><br><span class="line">BYE</span><br><span class="line"><span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>status</strong>:检查已回收的子进程的退出状态，主要是利用wait.h头文件中的几个宏来检测。<ul>
+<li><strong>WIFEXITED(status)</strong> : 如果子进程通过调用exit或者return正常终止，那么就返回真</li>
+<li><strong>WEXITSTATUS(status)</strong> : 返回一个正常终止的子进程的退出状态，返回子进程中exit或_exit的低八位。</li>
+<li>*<em>WIFSIGNALED(status) *</em>: 若子进程异常终止，它就取得一个非零值，表示真。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ol start="2">
+<li><strong>参数为WNOHANG的轮询机制</strong>：</li>
+</ol>
+<ul>
+<li>实验代码：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">pid_t</span> pid2;</span><br><span class="line">    <span class="keyword">pid_t</span> pid1 = fork();</span><br><span class="line">    <span class="keyword">if</span>(pid1&lt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"fork"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(pid1 == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        sleep(<span class="number">10</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            pid2 = waitpid(pid1,<span class="literal">NULL</span>,WNOHANG);</span><br><span class="line">            <span class="keyword">if</span>(pid2 == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"No child exited!\n"</span>);</span><br><span class="line">                sleep(<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">while</span>(pid2 == <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span>(pid2 == pid1)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"successfully get child!\n"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"some error occured\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//运行结果：</span></span><br><span class="line">No child exited!</span><br><span class="line">No child exited!</span><br><span class="line">No child exited!</span><br><span class="line">No child exited!</span><br><span class="line">No child exited!</span><br><span class="line">No child exited!</span><br><span class="line">No child exited!</span><br><span class="line">No child exited!</span><br><span class="line">No child exited!</span><br><span class="line">No child exited!</span><br><span class="line">successfully <span class="built_in">get</span> child!</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>父进程打印一次No child exited!，sleep一秒，这便是非阻塞等待。</p>
+</li>
+<li><p>除了sleep(1)，父进程还可以进行更多的事情，这里为了方便就使父进程sleep(1)。</p>
+</li>
+<li><p>此处的轮询机制可以理解为：父进程不必停下来在乎子进程的状态，而是进行自己的事情。然后过一会儿询问一下，是否有子进程结束，如果没有则继续做自己的事，过一会儿又回来询问；若是有，则回收子进程。</p>
+</li>
+</ul>
+
       
 
       
@@ -451,7 +535,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
             
             <div class="clearfix"></div>
