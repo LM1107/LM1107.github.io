@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>网络编程1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.TCP协议的特点： 2.UDP 协议的特点： 3.套接字socket3.1 定义：3.1.1 socket() 该函数用于创建一个套接字，同时指定协议和类型。  函数原型   12#include &lt;sys&#x2F;socket.h&gt;int socket(int family,int type,int protocol);   参数： family：协议族   AF_INET：Ipv4协议">
+  <meta name="description" content="1.TCP协议的特点： 2.UDP 协议的特点： 3.套接字socket3.1 定义：3.1.1 socket() 该函数用于创建一个套接字，同时指定协议和类型。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络编程1">
 <meta property="og:url" content="http://yoursite.com/2020/07/14/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.TCP协议的特点： 2.UDP 协议的特点： 3.套接字socket3.1 定义：3.1.1 socket() 该函数用于创建一个套接字，同时指定协议和类型。  函数原型   12#include &lt;sys&#x2F;socket.h&gt;int socket(int family,int type,int protocol);   参数： family：协议族   AF_INET：Ipv4协议">
+<meta property="og:description" content="1.TCP协议的特点： 2.UDP 协议的特点： 3.套接字socket3.1 定义：3.1.1 socket() 该函数用于创建一个套接字，同时指定协议和类型。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-14T05:32:21.000Z">
-<meta property="article:modified_time" content="2020-07-16T01:02:02.290Z">
+<meta property="article:modified_time" content="2020-07-16T03:49:37.614Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="Linux高级">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
     	<div id="toc-article" class="toc-article">
     	    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
     		<strong class="toc-title">文章目录</strong>
-               <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-TCP协议的特点："><span class="toc-number">1.</span> <span class="toc-text">1.TCP协议的特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-UDP-协议的特点："><span class="toc-number">2.</span> <span class="toc-text">2.UDP 协议的特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-套接字socket"><span class="toc-number">3.</span> <span class="toc-text">3.套接字socket</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-定义："><span class="toc-number">3.1.</span> <span class="toc-text">3.1 定义：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-1-socket"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 socket()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-2-bind"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 bind()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-3-listen"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 listen()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-4-accept"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4 accept()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-5-connect"><span class="toc-number">3.1.5.</span> <span class="toc-text">3.1.5 connect()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-6-send-和-recv"><span class="toc-number">3.1.6.</span> <span class="toc-text">3.1.6 send() 和 recv()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-7-sendto-和-recvfrom"><span class="toc-number">3.1.7.</span> <span class="toc-text">3.1.7 sendto() 和 recvfrom()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-流式套接字-SOCK-STREAM"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 流式套接字(SOCK_STREAM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-数据报套接字-SOCK-DGRAM"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 数据报套接字(SOCK_DGRAM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-原始套接字-SOCK-RAW"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 原始套接字(SOCK_RAW)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-IP地址-着重于函数的调用"><span class="toc-number">4.</span> <span class="toc-text">4.IP地址(着重于函数的调用)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#P-S-IP地址详解将单独写一篇文章"><span class="toc-number">4.1.</span> <span class="toc-text">P.S.IP地址详解将单独写一篇文章</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-作用："><span class="toc-number">4.2.</span> <span class="toc-text">4.1 作用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-涉及IP地址格式转换的函数："><span class="toc-number">4.3.</span> <span class="toc-text">4.2 涉及IP地址格式转换的函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-1-将点分十进制转换为二进制形式"><span class="toc-number">4.3.1.</span> <span class="toc-text">4.2.1 将点分十进制转换为二进制形式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-2-二进制转为点分十进制"><span class="toc-number">4.3.2.</span> <span class="toc-text">4.2.2 二进制转为点分十进制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-地址结构相关处理"><span class="toc-number">4.4.</span> <span class="toc-text">4.3 地址结构相关处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-1两个数据类型"><span class="toc-number">4.4.1.</span> <span class="toc-text">4.3.1两个数据类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-端口"><span class="toc-number">5.</span> <span class="toc-text">5.端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-字节序"><span class="toc-number">6.</span> <span class="toc-text">6.字节序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-定义"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-涉及函数"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 涉及函数</span></a></li></ol></li></ol>
+               <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-TCP协议的特点："><span class="toc-number">1.</span> <span class="toc-text">1.TCP协议的特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-UDP-协议的特点："><span class="toc-number">2.</span> <span class="toc-text">2.UDP 协议的特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-套接字socket"><span class="toc-number">3.</span> <span class="toc-text">3.套接字socket</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-定义："><span class="toc-number">3.1.</span> <span class="toc-text">3.1 定义：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-1-socket"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 socket()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-2-bind"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 bind()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-3-listen"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 listen()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-4-accept"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4 accept()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-5-connect"><span class="toc-number">3.1.5.</span> <span class="toc-text">3.1.5 connect()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-6-send-和-recv"><span class="toc-number">3.1.6.</span> <span class="toc-text">3.1.6 send() 和 recv()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-7-sendto-和-recvfrom"><span class="toc-number">3.1.7.</span> <span class="toc-text">3.1.7 sendto() 和 recvfrom()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-流式套接字-SOCK-STREAM"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 流式套接字(SOCK_STREAM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-数据报套接字-SOCK-DGRAM"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 数据报套接字(SOCK_DGRAM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-原始套接字-SOCK-RAW"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 原始套接字(SOCK_RAW)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-打开了一个套接字文件描述符就必须有关闭-close-或者shutdowm"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 打开了一个套接字文件描述符就必须有关闭 close()或者shutdowm()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-IP地址-着重于函数的调用"><span class="toc-number">4.</span> <span class="toc-text">4.IP地址(着重于函数的调用)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#P-S-IP地址详解将单独写一篇文章"><span class="toc-number">4.1.</span> <span class="toc-text">P.S.IP地址详解将单独写一篇文章</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-作用："><span class="toc-number">4.2.</span> <span class="toc-text">4.1 作用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-涉及IP地址格式转换的函数："><span class="toc-number">4.3.</span> <span class="toc-text">4.2 涉及IP地址格式转换的函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-1-将点分十进制转换为二进制形式"><span class="toc-number">4.3.1.</span> <span class="toc-text">4.2.1 将点分十进制转换为二进制形式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-2-二进制转为点分十进制"><span class="toc-number">4.3.2.</span> <span class="toc-text">4.2.2 二进制转为点分十进制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-地址结构相关处理"><span class="toc-number">4.4.</span> <span class="toc-text">4.3 地址结构相关处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-1两个数据类型"><span class="toc-number">4.4.1.</span> <span class="toc-text">4.3.1两个数据类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-端口"><span class="toc-number">5.</span> <span class="toc-text">5.端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-字节序"><span class="toc-number">6.</span> <span class="toc-text">6.字节序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-定义"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-涉及函数"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 涉及函数</span></a></li></ol></li></ol>
              </div>
        <script type="text/javascript">
     	function showToc(){
@@ -205,10 +205,12 @@
         <h3 id="1-TCP协议的特点："><a href="#1-TCP协议的特点：" class="headerlink" title="1.TCP协议的特点："></a>1.TCP协议的特点：</h3><hr>
 <h3 id="2-UDP-协议的特点："><a href="#2-UDP-协议的特点：" class="headerlink" title="2.UDP 协议的特点："></a>2.UDP 协议的特点：</h3><hr>
 <h3 id="3-套接字socket"><a href="#3-套接字socket" class="headerlink" title="3.套接字socket"></a>3.套接字socket</h3><h4 id="3-1-定义："><a href="#3-1-定义：" class="headerlink" title="3.1 定义："></a>3.1 定义：</h4><h5 id="3-1-1-socket"><a href="#3-1-1-socket" class="headerlink" title="3.1.1 socket()"></a>3.1.1 socket()</h5><ul>
-<li><p><strong>该函数用于创建一个套接字，同时指定协议和类型。</strong></p>
-</li>
-<li><p>函数原型</p>
-</li>
+<li><strong>该函数用于创建一个套接字，同时指定协议和类型。</strong></li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>函数原型</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> family,<span class="keyword">int</span> type,<span class="keyword">int</span> protocol)</span></span>;</span><br></pre></td></tr></table></figure>
 
@@ -425,6 +427,50 @@
 <h4 id="3-4-原始套接字-SOCK-RAW"><a href="#3-4-原始套接字-SOCK-RAW" class="headerlink" title="3.4 原始套接字(SOCK_RAW)"></a>3.4 原始套接字(SOCK_RAW)</h4><ul>
 <li><p><strong>定义：</strong></p>
 <p>原始套接字允许对底层协议（如IP或ICMP）进行直接访问，它功能强大但使用较为不便，<strong>主要用于一些协议的开发</strong>。</p>
+</li>
+</ul>
+<h4 id="3-5-打开了一个套接字文件描述符就必须有关闭-close-或者shutdowm"><a href="#3-5-打开了一个套接字文件描述符就必须有关闭-close-或者shutdowm" class="headerlink" title="3.5 打开了一个套接字文件描述符就必须有关闭 close()或者shutdowm()"></a>3.5 打开了一个套接字文件描述符就必须有关闭 close()或者shutdowm()</h4><ul>
+<li><strong>1.closer() — 函数原型</strong>：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">(fd)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>close()发送的是<strong>FIN</strong>字节，也可能是<strong>RST</strong>（如果local接受缓冲区的数据没有被读完）；</p>
+<ul>
+<li>server端关闭的时候如果发送的是FIN，则这个socket在<strong>server端将不能够被read和write</strong>。</li>
+<li><strong>默认状态</strong>，是把此套接字标记为关闭状态（<strong>真正只是把套接字的引用计数-1</strong>），close函数都立刻返回。<strong>如果引用计数为0</strong>，才开始<strong>发送四字节的FIN分节(连接终止序列)</strong>，</li>
+<li>close()在sever端调用之后，会立刻返回，同时<strong>尽力发送此时仍然在套接字发送缓冲区的发送数据</strong>，在此之后才会发出FIN四分节的连接终止序列。</li>
+</ul>
+</li>
+<li><p>扩展：在<strong>父子进程模型</strong>中，我们每次fork子进程之后，都需要在<strong>父进程</strong>中关闭<strong>连接套接字（connfd）</strong>，而在<strong>子进程</strong>中都需要关闭<strong>监听套接字</strong>，此模型中<strong>accept在fork函数之前</strong>。</p>
+</li>
+<li><p>原因有两点：</p>
+<ol>
+<li>如果不关闭，由于父进程每次进行accept()连接，都会返回一个新的fd，会导致<strong>父进程会消耗所有可用的描述符</strong>；</li>
+<li>如果不关父进程中的connfd，则父子进程的引用计数都保持在2，即便子进程关闭，只是把引用计数-1，这样由于父进程正常情况永远不会关闭，所以这些连接其实永远都不会关闭，消耗资源，因为这<strong>阻挡了终止序列FIN的发出</strong>。</li>
+</ol>
+</li>
+<li><p><strong>2.shutdown() — 函数原型</strong>：</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">shutdown</span><span class="params">(<span class="keyword">int</span> sockfd, <span class="keyword">int</span> how)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数：<ul>
+<li><strong>SHUT_RD</strong>： server端关闭读端，执行以后进程就不能再对这样的套接字调用任何读操作</li>
+<li><strong>SHUT_WR（半关闭）</strong>：<ol>
+<li>当前server套接字发送缓冲区中的内容被发送到对端，后跟正常的TCP连接终止序列（即发送FIN）;</li>
+<li>关闭连接的写这一半，进程不能再对这样的套接字<strong>调用任何写操作</strong>；</li>
+<li>在server的套接字上不能再发出发送请求，<strong>进程仍可从套接字接收数据</strong>，当前server套接字发送缓冲区中的内容被发送到对端，后跟正常的TCP连接终止序列（即发送FIN），对套接字接收缓冲区无任何影响；</li>
+</ol>
+</li>
+<li><strong>SHUT_RDWR</strong>：</li>
+</ul>
+</li>
+<li><strong>3.close()与shutdown()的区别</strong>：<ol>
+<li><strong>shutdown</strong>关闭<strong>读</strong>不会给对方发<strong>FIN</strong>, 只有关闭<strong>写</strong>才会发<strong>FIN</strong>, 而且跟local TCP buffer状态没关系，只发送FIN包，从不发送RST</li>
+<li>server端，close调用之后如果在local TCP buffer内如果<strong>还有数据没有读取会给对方</strong>，则<strong>主动直接发送RST</strong>给client, 否则发送FIN,这取决于调用close时刻local TCP buffer的状态， 跟对端是不是继续发送数据无关。</li>
+</ol>
 </li>
 </ul>
 <hr>
@@ -697,7 +743,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-TCP协议的特点："><span class="toc-number">1.</span> <span class="toc-text">1.TCP协议的特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-UDP-协议的特点："><span class="toc-number">2.</span> <span class="toc-text">2.UDP 协议的特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-套接字socket"><span class="toc-number">3.</span> <span class="toc-text">3.套接字socket</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-定义："><span class="toc-number">3.1.</span> <span class="toc-text">3.1 定义：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-1-socket"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 socket()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-2-bind"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 bind()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-3-listen"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 listen()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-4-accept"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4 accept()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-5-connect"><span class="toc-number">3.1.5.</span> <span class="toc-text">3.1.5 connect()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-6-send-和-recv"><span class="toc-number">3.1.6.</span> <span class="toc-text">3.1.6 send() 和 recv()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-7-sendto-和-recvfrom"><span class="toc-number">3.1.7.</span> <span class="toc-text">3.1.7 sendto() 和 recvfrom()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-流式套接字-SOCK-STREAM"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 流式套接字(SOCK_STREAM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-数据报套接字-SOCK-DGRAM"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 数据报套接字(SOCK_DGRAM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-原始套接字-SOCK-RAW"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 原始套接字(SOCK_RAW)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-IP地址-着重于函数的调用"><span class="toc-number">4.</span> <span class="toc-text">4.IP地址(着重于函数的调用)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#P-S-IP地址详解将单独写一篇文章"><span class="toc-number">4.1.</span> <span class="toc-text">P.S.IP地址详解将单独写一篇文章</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-作用："><span class="toc-number">4.2.</span> <span class="toc-text">4.1 作用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-涉及IP地址格式转换的函数："><span class="toc-number">4.3.</span> <span class="toc-text">4.2 涉及IP地址格式转换的函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-1-将点分十进制转换为二进制形式"><span class="toc-number">4.3.1.</span> <span class="toc-text">4.2.1 将点分十进制转换为二进制形式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-2-二进制转为点分十进制"><span class="toc-number">4.3.2.</span> <span class="toc-text">4.2.2 二进制转为点分十进制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-地址结构相关处理"><span class="toc-number">4.4.</span> <span class="toc-text">4.3 地址结构相关处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-1两个数据类型"><span class="toc-number">4.4.1.</span> <span class="toc-text">4.3.1两个数据类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-端口"><span class="toc-number">5.</span> <span class="toc-text">5.端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-字节序"><span class="toc-number">6.</span> <span class="toc-text">6.字节序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-定义"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-涉及函数"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 涉及函数</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-TCP协议的特点："><span class="toc-number">1.</span> <span class="toc-text">1.TCP协议的特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-UDP-协议的特点："><span class="toc-number">2.</span> <span class="toc-text">2.UDP 协议的特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-套接字socket"><span class="toc-number">3.</span> <span class="toc-text">3.套接字socket</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-定义："><span class="toc-number">3.1.</span> <span class="toc-text">3.1 定义：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-1-socket"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 socket()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-2-bind"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 bind()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-3-listen"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 listen()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-4-accept"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4 accept()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-5-connect"><span class="toc-number">3.1.5.</span> <span class="toc-text">3.1.5 connect()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-6-send-和-recv"><span class="toc-number">3.1.6.</span> <span class="toc-text">3.1.6 send() 和 recv()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-7-sendto-和-recvfrom"><span class="toc-number">3.1.7.</span> <span class="toc-text">3.1.7 sendto() 和 recvfrom()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-流式套接字-SOCK-STREAM"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 流式套接字(SOCK_STREAM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-数据报套接字-SOCK-DGRAM"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 数据报套接字(SOCK_DGRAM)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-原始套接字-SOCK-RAW"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 原始套接字(SOCK_RAW)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-打开了一个套接字文件描述符就必须有关闭-close-或者shutdowm"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 打开了一个套接字文件描述符就必须有关闭 close()或者shutdowm()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-IP地址-着重于函数的调用"><span class="toc-number">4.</span> <span class="toc-text">4.IP地址(着重于函数的调用)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#P-S-IP地址详解将单独写一篇文章"><span class="toc-number">4.1.</span> <span class="toc-text">P.S.IP地址详解将单独写一篇文章</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-作用："><span class="toc-number">4.2.</span> <span class="toc-text">4.1 作用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-涉及IP地址格式转换的函数："><span class="toc-number">4.3.</span> <span class="toc-text">4.2 涉及IP地址格式转换的函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-1-将点分十进制转换为二进制形式"><span class="toc-number">4.3.1.</span> <span class="toc-text">4.2.1 将点分十进制转换为二进制形式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-2-二进制转为点分十进制"><span class="toc-number">4.3.2.</span> <span class="toc-text">4.2.2 二进制转为点分十进制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-地址结构相关处理"><span class="toc-number">4.4.</span> <span class="toc-text">4.3 地址结构相关处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-1两个数据类型"><span class="toc-number">4.4.1.</span> <span class="toc-text">4.3.1两个数据类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-端口"><span class="toc-number">5.</span> <span class="toc-text">5.端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-字节序"><span class="toc-number">6.</span> <span class="toc-text">6.字节序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-定义"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-涉及函数"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 涉及函数</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -821,7 +867,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -829,7 +875,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,7 +887,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">计算机组成原理</a>
               </li>
             
             <div class="clearfix"></div>
