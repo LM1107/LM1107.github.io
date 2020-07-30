@@ -152,6 +152,374 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C++_explicit关键字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/30/C++_explicit%E5%85%B3%E9%94%AE%E5%AD%97/">C++_explicit关键字</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/30/C++_explicit%E5%85%B3%E9%94%AE%E5%AD%97/" class="archive-article-date">
+  	<time datetime="2020-07-30T12:13:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-30</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="explicit关键字"><a href="#explicit关键字" class="headerlink" title="explicit关键字"></a>explicit关键字</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>首先，C++中的explicit关键字只能用于修饰<strong>只有一个参数的类构造函数</strong>，它的作用是表明<strong>该构造函数是显示的</strong>，<strong>非隐式的</strong>。</li>
+<li>跟它相对应的另一个关键字是<strong>implicit</strong>，意思是<strong>隐藏的</strong>，类构造函数<strong>默认情况</strong>下声明为implicit(隐式)。</li>
+</ul>
+<h4 id="显示声明和隐式声明的区别"><a href="#显示声明和隐式声明的区别" class="headerlink" title="显示声明和隐式声明的区别"></a>显示声明和隐式声明的区别</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/30/C++_explicit%E5%85%B3%E9%94%AE%E5%AD%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C++_异常处理2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/30/C++_%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%862/">C_异常处理2</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/30/C++_%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%862/" class="archive-article-date">
+  	<time datetime="2020-07-30T11:50:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-30</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="二、C-标准异常类"><a href="#二、C-标准异常类" class="headerlink" title="二、C++标准异常类"></a>二、C++标准异常类</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>C++ 标准库中有一些类代表异常，这些类都是从exception类派生而来的。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">              /-- bad_typeid</span><br><span class="line">           / / -- bad_cast</span><br><span class="line">exception  --  -- bad_alloc</span><br><span class="line">           \ \ -- ios_base::failure</span><br><span class="line">              \-- logic_error------&gt;out_of_range</span><br><span class="line">                  </span><br><span class="line">         <span class="comment">//常用的异常类</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>以上都是exception类的派生类，C++程序在遇上某些异常时，即使程序中没有写throw语句，也会自动抛出上述异常类的对象。这些异常类还都有名为what的成员函数，返回字符串形式的异常描述信息。使用这些异常类需要包含<strong>头文件 stdexcept</strong>。</li>
+</ul>
+<h4 id="bad-typeid"><a href="#bad-typeid" class="headerlink" title="bad_typeid"></a>bad_typeid</h4><ul>
+<li>使用typeid运算符时，如果其操作数是一个<strong>多态类的指针</strong>，而该指针的值为NULL，则会出现此异常。</li>
+</ul>
+<h4 id="bad-cast"><a href="#bad-cast" class="headerlink" title="bad_cast"></a>bad_cast</h4><ul>
+<li>在用dynamic_cast进行从<strong>多态基类对象（或引用）</strong>到<strong>派生类的引用</strong>的强制类型转换时，如果转换是不安全的，则会抛出该异常。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdexcept&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span> :</span> <span class="keyword">public</span> Base</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintObj</span><span class="params">(Base &amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Derived &amp; rd = <span class="keyword">dynamic_cast</span> &lt;Derived &amp;&gt;(b);</span><br><span class="line">        <span class="comment">//此转换若不安全，会拋出 bad_cast 异常</span></span><br><span class="line">        rd.Print();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (bad_cast &amp; e) &#123;</span><br><span class="line">        <span class="built_in">cerr</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Base b;</span><br><span class="line">    PrintObj(b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//运行结果</span></span><br><span class="line"><span class="built_in">std</span>::bad_cast</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>分析</strong>：在PrintObj函数中，通过dyname_cast检测到b是否引用的是一个Derived对象，如果是，就调用其Print成员函数；如果不是，就抛出异常，不会调用Derived::Print。</li>
+</ul>
+<h4 id="bad-alloc"><a href="#bad-alloc" class="headerlink" title="bad_alloc"></a>bad_alloc</h4><ul>
+<li>在new运算符进行动态内存分配时，如果没有足够的内存，则会引发此异常。</li>
+<li><strong>实例</strong>：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdexcept&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">char</span> * p = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">0x7fffffff</span>];  <span class="comment">//无法分配这么多空间，会抛出异常</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (bad_alloc &amp; e)  &#123;</span><br><span class="line">        <span class="built_in">cerr</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//运行结果暂时没有输出 </span></span><br><span class="line"><span class="comment">//应为</span></span><br><span class="line">bad allocation</span><br><span class="line">ios_base::failure</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在默认状态下输入输出流对象不会抛出此异常，如果用流对象的exceptions成员函数设置了一些标志位，则出现<strong>打开文件出错</strong>，<strong>读到输入流的文件尾</strong>等情况时会抛出此异常。</li>
+</ul>
+<h4 id="out-of-range"><a href="#out-of-range" class="headerlink" title="out_of_range"></a>out_of_range</h4><ul>
+<li>用vector或string的at成员函数根据下标访问元素时，如果<strong>下标越界</strong>,则会抛出此异常。</li>
+<li><strong>示例</strong>：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdexcept&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">v</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        v.at(<span class="number">100</span>) = <span class="number">100</span>;  <span class="comment">//拋出 out_of_range 异常</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (out_of_range &amp; e) &#123;</span><br><span class="line">        <span class="built_in">cerr</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">string</span> s = <span class="string">"hello"</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">char</span> c = s.at(<span class="number">100</span>);  <span class="comment">//拋出 out_of_range 异常</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (out_of_range &amp; e) &#123;</span><br><span class="line">        <span class="built_in">cerr</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//运行结果</span></span><br><span class="line"><span class="built_in">vector</span>::_M_range_check: __n (which is <span class="number">100</span>) &gt;= <span class="keyword">this</span>-&gt;<span class="built_in">size</span>() (which is <span class="number">10</span>)</span><br><span class="line">basic_string::at: __n (which is <span class="number">100</span>) &gt;= <span class="keyword">this</span>-&gt;<span class="built_in">size</span>() (which is <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果将<code>v.at(100)</code>换成<code>v[100]</code>，将<code>s.at(100)</code>换成<code>s[100]</code>，程序就不会引发异常（但可能导致程序崩溃）。因为 at 成员函数会检测下标越界并拋出异常，而 operator[] 则不会。operator [] 相比 at 的好处就是不用判断下标是否越界，因此执行速度更快。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/30/C++_%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%862/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C++-异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/30/C++-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">C++_异常处理1</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/30/C++-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-07-30T09:51:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-30</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、C-异常处理"><a href="#一、C-异常处理" class="headerlink" title="一、C++异常处理"></a>一、C++异常处理</h3><h4 id="1-为什么要使用异常处理"><a href="#1-为什么要使用异常处理" class="headerlink" title="1.为什么要使用异常处理"></a>1.为什么要使用异常处理</h4><ul>
+<li><p>在程序运行时，会遇到一些异常情况，如：</p>
+<ul>
+<li>做除法的时候除数为 0；</li>
+<li>用户输入年龄时输入了一个负数；</li>
+</ul></li></ul>
+        
+          <a class="article-more-a" href="/2020/07/30/C++-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/30/C++-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C++_类的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/26/C++_%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/">C++_成员函数和成员变量占用内存大小</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/26/C++_%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-07-26T02:58:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="class-类"><a href="#class-类" class="headerlink" title="class 类"></a>class 类</h3><h4 id="占用空间"><a href="#占用空间" class="headerlink" title="占用空间"></a>占用空间</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//成员变量和成员函数是分开存储的。</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&#123;</span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> m_Age;  	<span class="comment">//非静态成员变量 属于类的对象上</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> m_B; 	<span class="comment">//静态成员变量 不属于类的对象上</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;&#125;  	<span class="comment">//非静态成员函数 不属于类的对象上</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span></span>&#123;&#125;	<span class="comment">//静态成员函数 不属于类的对象上</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> Demo::m_B = <span class="number">13</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Person p;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"sizeof Person = "</span>&lt;&lt;<span class="keyword">sizeof</span>(p)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   	Demo obj;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"sizeof obj = "</span>&lt;&lt;<span class="keyword">sizeof</span>(obj)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	test01();</span><br><span class="line">    test02();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//test01输出结果</span></span><br><span class="line"><span class="keyword">sizeof</span> Person = <span class="number">1</span></span><br><span class="line"><span class="comment">//test02输出结果</span></span><br><span class="line"><span class="keyword">sizeof</span> obj = <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>原因</strong>：</li>
+<li>在C++中<strong>空对象</strong>占用内存空间为：1；<ul>
+<li>C++编译器会给每个空对象也分配一个字节空间，是为了区分空对象占内存的位置；</li>
+<li>为了区分创建的多个空对象，<strong>每个空对象应该有一个独一无二的内存地址。</strong></li>
+</ul>
+</li>
+<li>如果<strong>对象不是空的</strong>，就根据类内的属性的数据类型来定大小。</li>
+<li>如果是<strong>静态成员变量</strong>，由于他不属于类对象上，所以<strong>sizeof(obj)没有改变</strong>。</li>
+<li>如果是<strong>非静态成员函数</strong>，也不会影响到sizeof(p)的大小，因为<strong>成员函数</strong>和<strong>成员变量</strong>是分开存储的。也可以理解为成员函数只会在调用的时候使用内存空间，其他时候都是不占用内存空间的。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/26/C++_%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C++_内联函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -581,313 +949,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F_%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-项目托管_svn教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/17/%E9%A1%B9%E7%9B%AE%E6%89%98%E7%AE%A1_svn%E6%95%99%E7%A8%8B/">svn教程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/17/%E9%A1%B9%E7%9B%AE%E6%89%98%E7%AE%A1_svn%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-07-17T09:09:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-17</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-    
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="见菜鸟教程"><a href="#见菜鸟教程" class="headerlink" title="见菜鸟教程"></a>见菜鸟教程</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目托管</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/17/%E9%A1%B9%E7%9B%AE%E6%89%98%E7%AE%A1_svn%E6%95%99%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计组_内存单位" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/17/%E8%AE%A1%E7%BB%84_%E5%86%85%E5%AD%98%E5%8D%95%E4%BD%8D/">内存单位</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/17/%E8%AE%A1%E7%BB%84_%E5%86%85%E5%AD%98%E5%8D%95%E4%BD%8D/" class="archive-article-date">
-  	<time datetime="2020-07-17T08:21:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-17</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-    
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="计算机内存单位"><a href="#计算机内存单位" class="headerlink" title="计算机内存单位"></a>计算机内存单位</h3><h4 id="字（word）"><a href="#字（word）" class="headerlink" title="字（word）"></a>字（word）</h4><ul>
-<li><p><strong>16位机器中，1 word = 2 byte</strong></p>
-</li>
-<li><p><strong>32位机器中，1 word = 4 byte</strong></p>
-</li>
-<li><p><strong>定义</strong>：</p>
-<ul>
-<li>计算机中<strong>传送信息</strong>的<strong>基本单位</strong>。</li>
-</ul></li></ul>
-        
-          <a class="article-more-a" href="/2020/07/17/%E8%AE%A1%E7%BB%84_%E5%86%85%E5%AD%98%E5%8D%95%E4%BD%8D/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计算机组成原理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/17/%E8%AE%A1%E7%BB%84_%E5%86%85%E5%AD%98%E5%8D%95%E4%BD%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux高级_网络编程之TCP协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/17/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BTCP%E5%8D%8F%E8%AE%AE/">网络编程之TCP协议</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/17/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BTCP%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
-  	<time datetime="2020-07-17T01:03:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-17</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-    
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h3><h4 id="TCP协议如何保证可靠"><a href="#TCP协议如何保证可靠" class="headerlink" title="TCP协议如何保证可靠"></a>TCP协议如何保证可靠</h4><h4 id="滑动窗口-—-TCP协议为了保证速率"><a href="#滑动窗口-—-TCP协议为了保证速率" class="headerlink" title="滑动窗口 — TCP协议为了保证速率"></a>滑动窗口 — TCP协议为了保证速率</h4><h4 id="数据报头部"><a href="#数据报头部" class="headerlink" title="数据报头部"></a>数据报头部</h4>
-        
-          <a class="article-more-a" href="/2020/07/17/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BTCP%E5%8D%8F%E8%AE%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux高级</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/17/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BTCP%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux高级_网络编程之IP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/16/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BIP/">网络编程之IP</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/16/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BIP/" class="archive-article-date">
-  	<time datetime="2020-07-16T12:03:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-    
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/16/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BIP/">展开全文 >></a>
         </p>
       
 
