@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C_异常处理2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="二、C++标准异常类定义 C++ 标准库中有一些类代表异常，这些类都是从exception类派生而来的。  12345678              &#x2F;-- bad_typeid           &#x2F; &#x2F; -- bad_castexception  --  -- bad_alloc           \ \ -- ios_base::failure              \-- logi">
+  <meta name="description" content="二、C++标准异常类定义 C++ 标准库中有一些类代表异常，这些类都是从exception类派生而来的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C_异常处理2">
 <meta property="og:url" content="http://yoursite.com/2020/07/30/C++_%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%862/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="二、C++标准异常类定义 C++ 标准库中有一些类代表异常，这些类都是从exception类派生而来的。  12345678              &#x2F;-- bad_typeid           &#x2F; &#x2F; -- bad_castexception  --  -- bad_alloc           \ \ -- ios_base::failure              \-- logi">
+<meta property="og:description" content="二、C++标准异常类定义 C++ 标准库中有一些类代表异常，这些类都是从exception类派生而来的。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-30T11:50:32.000Z">
-<meta property="article:modified_time" content="2020-07-30T12:12:10.872Z">
+<meta property="article:modified_time" content="2020-07-31T02:17:56.566Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -205,10 +205,12 @@
         <h3 id="二、C-标准异常类"><a href="#二、C-标准异常类" class="headerlink" title="二、C++标准异常类"></a>二、C++标准异常类</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
 <li>C++ 标准库中有一些类代表异常，这些类都是从exception类派生而来的。</li>
 </ul>
+<a id="more"></a>
+
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">              /-- bad_typeid</span><br><span class="line">           / / -- bad_cast</span><br><span class="line">exception  --  -- bad_alloc</span><br><span class="line">           \ \ -- ios_base::failure</span><br><span class="line">              \-- logic_error------&gt;out_of_range</span><br><span class="line">                  </span><br><span class="line">         <span class="comment">//常用的异常类</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>以上都是exception类的派生类，C++程序在遇上某些异常时，即使程序中没有写throw语句，也会自动抛出上述异常类的对象。这些异常类还都有名为what的成员函数，返回字符串形式的异常描述信息。使用这些异常类需要包含<strong>头文件 stdexcept</strong>。</li>
+<li>以上都是exception类的派生类，C++程序在遇上某些异常时，即使程序中没有写throw语句，也会自动抛出上述异常类的对象。这些异常类还都有名为what的成员函数，返回字符串形式的异常描述信息。使用这些异常类需要包含<strong>头文件 stdexcept.h</strong>。</li>
 </ul>
 <h4 id="bad-typeid"><a href="#bad-typeid" class="headerlink" title="bad_typeid"></a>bad_typeid</h4><ul>
 <li>使用typeid运算符时，如果其操作数是一个<strong>多态类的指针</strong>，而该指针的值为NULL，则会出现此异常。</li>
@@ -493,6 +495,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -513,11 +519,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,11 +531,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
+                <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
               </li>
             
             <div class="clearfix"></div>

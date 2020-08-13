@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、C++异常处理1.为什么要使用异常处理 在程序运行时，会遇到一些异常情况，如：  做除法的时候除数为 0； 用户输入年龄时输入了一个负数；">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-30T09:51:08.000Z">
-<meta property="article:modified_time" content="2020-07-30T11:50:12.007Z">
+<meta property="article:modified_time" content="2020-07-31T02:17:47.241Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -309,7 +309,7 @@
 <li><p>C+=允许在函数声明和定义时，加上它所能抛出的异常的列表。具体写法如下：</p>
 </li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span><span class="title">throw</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">double</span>,A,B,C)</span></span>;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span><span class="title">throw</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">double</span>,A,B,C)</span></span>&#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span><span class="title">throw</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//如果这样写表示函数不会抛出任何异常。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span><span class="title">throw</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">double</span>,A,B,C)</span></span>;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span><span class="title">throw</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">double</span>,A,B,C)</span></span>&#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span><span class="title">throw</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//如果这样写表示函数不会抛出任何异常。</span></span><br><span class="line"><span class="comment">//或者使用noexcept</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span><span class="keyword">noexcept</span></span>;</span><br><span class="line"><span class="comment">//如果这样写表示函数不会抛出任何异常。</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>上面的写法表明func可能抛出int型、double型以及A、B、C三种类型的异常。异常声明列表可以在函数声明时写，也可以在函数定义时写。如果两处都写，则两处应一致。</li>
@@ -568,6 +568,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -588,11 +592,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,11 +604,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
+                <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
+                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
               </li>
             
             <div class="clearfix"></div>
