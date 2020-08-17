@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>线程1 | Hexo</title>
+  <title>Tag: 计组 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线程1.线程的实现 为了进一步减少处理器的空转时间，支持多处理器以及减少上下文切换开销，进程在演化中出现了另一个概念——线程。 线程是内核调度的最小单位，也被称为轻量级进程(LWP)。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="线程1">
-<meta property="og:url" content="http://yoursite.com/2020/07/09/Linux%E9%AB%98%E7%BA%A7_%E7%BA%BF%E7%A8%8B1/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/%E8%AE%A1%E7%BB%84/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="线程1.线程的实现 为了进一步减少处理器的空转时间，支持多处理器以及减少上下文切换开销，进程在演化中出现了另一个概念——线程。 线程是内核调度的最小单位，也被称为轻量级进程(LWP)。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-09T03:06:27.000Z">
-<meta property="article:modified_time" content="2020-07-13T03:05:16.571Z">
 <meta property="article:author" content="LM1107">
-<meta property="article:tag" content="Linux高级">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -155,277 +150,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Linux高级_线程1" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      线程1
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/08/17/%E8%AE%A1%E7%BB%84-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8/" class="archive-article-date">
+  	<time datetime="2020-08-17T01:37:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/08/17/%E8%AE%A1%E7%BB%84-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8/">计组_浮点数的存储</a>
     </h1>
   
 
-        
-        <a href="/2020/07/09/Linux%E9%AB%98%E7%BA%A7_%E7%BA%BF%E7%A8%8B1/" class="archive-article-date">
-  	<time datetime="2020-07-09T03:06:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-    
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><h4 id="1-线程的实现"><a href="#1-线程的实现" class="headerlink" title="1.线程的实现"></a>1.线程的实现</h4><ul>
-<li>为了进一步减少处理器的空转时间，支持多处理器以及减少上下文切换开销，进程在演化中出现了另一个概念——线程。</li>
-<li>线程是<strong>内核调度的最小单位</strong>，也被称为轻量级进程(LWP)。</li>
-</ul>
-<a id="more"></a>
-
-<hr>
-<ol>
-<li><strong>线程的创建</strong>:</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_create</span><span class="params">(<span class="keyword">pthread_t</span> *thread, <span class="keyword">const</span> <span class="keyword">pthread_attr_t</span> *attr,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">void</span> *(*start_routine) (<span class="keyword">void</span> *), <span class="keyword">void</span> *arg)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数：<ul>
-<li><strong>thread</strong>：线程标识符；</li>
-<li><strong>attr</strong>：线程属性设置，NULL表示缺省属性；</li>
-<li><strong>start_routine</strong>：线程执行函数，参数和返回值都为void*；</li>
-<li><strong>arg</strong>：传递给start_routine的参数。</li>
-</ul>
-</li>
-<li>返回值：<ul>
-<li>成功，返回0；出错，返回错误码。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ol start="2">
-<li><strong>线程的退出</strong>:</li>
-</ol>
-<ul>
-<li><strong>划重点</strong>：使用线程函数时，不能使用exit函数来退出，exit函数的作用是使当前进程终止。通常一个进程包含多个线程，如果调用了exit函数，该进程中的所有线程都会结束，因此在线程中应该使用pthread_exit函数来结束当前进程。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pthread_exit</span><span class="params">(<span class="keyword">void</span> *retval)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数：<ul>
-<li><strong>retval</strong>：线程结束时的返回值，可通过pthread_join函数来接收。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ol start="3">
-<li><strong>主线程等待回收子线程</strong>:</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_join</span><span class="params">(<span class="keyword">pthread_t</span> thread, <span class="keyword">void</span> **retval)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>pthread_join函数，是以<strong>阻塞</strong>的方式等待thread指定的线程结束。当函数返回时，被等待线程的资源被收回。如果线程已经结束，那么该函数会立即返回。</p>
-</li>
-<li><p>参数：</p>
-<ul>
-<li><strong>thread</strong>：等待线程的标识符；</li>
-<li><strong>retval</strong>：接收被等待线程结束时的返回值。</li>
-</ul>
-</li>
-<li><p>返回值：</p>
-<ul>
-<li>成功，返回0；出错，返回错误码。</li>
-</ul>
-</li>
-</ul>
-<h4 id="既然提到了pthread-join函数，就不能错过pthread-detach函数"><a href="#既然提到了pthread-join函数，就不能错过pthread-detach函数" class="headerlink" title="既然提到了pthread_join函数，就不能错过pthread_detach函数"></a><strong>既然提到了pthread_join函数，就不能错过pthread_detach函数</strong></h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_detach</span><span class="params">(<span class="keyword">pthread_t</span> thread)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>pthread_detach()即主线程与子线程分离，子线程结束后，资源自动回收。</li>
-<li>返回值：</li>
-</ol>
-<ul>
-<li><p>pthread_detach() 在调用成功完成之后返回零。其他任何返回值都表示出现了错误。如果检测到以下任一情况，pthread_detach()将失败并返回相应的值。</p>
-<ul>
-<li>EINVAL：tid是分离线程</li>
-</ul>
-</li>
-<li><p>ESRCH：tid不是当前进程中有效的为分离线程</p>
-</li>
-</ul>
-<ol start="3">
-<li>pthread_detach函数的使用时机：</li>
-</ol>
-<ul>
-<li>创建一个线程默认的状态是joinable, 如果一个线程结束运行但没有被join,则它的状态类似于进程中的Zombie Process,即还有一部分资源没有被回收（退出状态码），所以创建线程者应该调用pthread_join来等待线程运行结束，并可得到线程的退出代码，回收其资源（类似于wait,waitpid)。</li>
-<li>但是调用pthread_join(pthread_id)后，如果该线程没有运行结束，调用者会被阻塞，在有些情况下我们并不希望如此，比如在Web服务器中当主线程为每个新来的链接创建一个子线程进行处理的时候，主线程并不希望因为调用pthread_join而阻塞（因为还要继续处理之后到来的链接），这时可以在子线程中加入代码<strong>pthread_detach(pthread_self())</strong>，或者父线程调用<strong>pthread_detach(thread_id)（非阻塞，可立即返回）</strong>，这将该子线程的状态设置为detached,则该线程运行结束后会自动释放所有资源。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">callback</span><span class="params">(<span class="keyword">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">while</span>(i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"----starting callback-----\n"</span>);</span><br><span class="line">        sleep(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    pthread_exit(<span class="number">0</span>); <span class="comment">//return (void *)1;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create thread1:\n"</span>);</span><br><span class="line">    <span class="keyword">pthread_t</span> threadID;</span><br><span class="line">    <span class="keyword">int</span> err;</span><br><span class="line">    pthread_create(&amp;threadID,<span class="literal">NULL</span>,callback,<span class="literal">NULL</span>);</span><br><span class="line">    pthread_detach(threadID);</span><br><span class="line"></span><br><span class="line">    sleep(<span class="number">1</span>);</span><br><span class="line">    pthread_exit(<span class="number">0</span>); <span class="comment">//退出main pthread这个线程，但是进程并没退出，所以接着执行后面的线程</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//运行结果：</span></span><br><span class="line">create thread1:</span><br><span class="line">----starting callback-----</span><br><span class="line">----starting callback-----</span><br><span class="line">----starting callback-----</span><br><span class="line">----starting callback-----</span><br><span class="line">----starting callback-----</span><br><span class="line">----starting callback-----</span><br><span class="line">----starting callback-----</span><br><span class="line">----starting callback-----</span><br><span class="line">----starting callback-----</span><br><span class="line">----starting callback-----</span><br><span class="line"><span class="comment">//如果注释掉25行的pthread_exit(0)，那么运行结果会是</span></span><br><span class="line">create thread1:</span><br><span class="line">----starting callback-----</span><br><span class="line"><span class="comment">//就结束了，因为线程1还没来及继续打印，进程就已经结束了，</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<ol start="4">
-<li><strong>在一个线程中终止另一个线程</strong>:</li>
-</ol>
-<hr>
-<h4 id="2-信号量"><a href="#2-信号量" class="headerlink" title="2.信号量"></a>2.信号量</h4><hr>
-<h4 id="3-互斥锁"><a href="#3-互斥锁" class="headerlink" title="3.互斥锁"></a>3.互斥锁</h4><hr>
-<h4 id="4-条件变量"><a href="#4-条件变量" class="headerlink" title="4.条件变量"></a>4.条件变量</h4><hr>
-<h4 id="5-原子操作"><a href="#5-原子操作" class="headerlink" title="5.原子操作"></a>5.原子操作</h4><hr>
-<h4 id="6-PV操作"><a href="#6-PV操作" class="headerlink" title="6.PV操作"></a>6.PV操作</h4><hr>
-<h4 id="7-死锁"><a href="#7-死锁" class="headerlink" title="7.死锁"></a>7.死锁</h4><ul>
-<li>何为死锁</li>
-<li>如何解决死锁</li>
-</ul>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux高级</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计组</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/09/Linux%E9%AB%98%E7%BA%A7_%E7%BA%BF%E7%A8%8B1/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/07/09/C++_%E5%BC%95%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          C++引用
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/07/09/C++_%E5%A0%86%E5%8C%BA%E6%93%8D%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C++堆区操作</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    </div></section>
   
 
-  
-
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -448,9 +226,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

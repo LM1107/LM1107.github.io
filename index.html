@@ -152,6 +152,174 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-计组-浮点数的存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/17/%E8%AE%A1%E7%BB%84-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8/">计组_浮点数的存储</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/17/%E8%AE%A1%E7%BB%84-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8/" class="archive-article-date">
+  	<time datetime="2020-08-17T01:37:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="浮点数的存储方式"><a href="#浮点数的存储方式" class="headerlink" title="浮点数的存储方式"></a>浮点数的存储方式</h3><h4 id="1-浮点数的存储格式"><a href="#1-浮点数的存储格式" class="headerlink" title="1.浮点数的存储格式"></a>1.浮点数的存储格式</h4><p><img src="https://note.youdao.com/yws/api/personal/file/WEBb0aca9e71a06dac8476961496c9dbd41?method=download&shareKey=b8f80e4fe4b4b21d0723eae2d59d6d1e" alt="1.png"></p>
+<ul>
+<li>上图即是<strong>单精度浮点数(float)</strong>和<strong>双精度浮点数(double)</strong>的存储格式。<ul>
+<li>符号位：表示浮点数是正数还是负数，0表示正数，1表示负数；</li>
+<li>指数位：通过科学计数法如M*10^N中的N，但这里是以2为底数。01111111代表2^0,即127，所以转换时需要根据127来做偏移调整。</li>
+</ul>
+</li>
+</ul>
+<h4 id="存储步骤"><a href="#存储步骤" class="headerlink" title="存储步骤"></a>存储步骤</h4><h5 id="1-十进制转二进制"><a href="#1-十进制转二进制" class="headerlink" title="1.十进制转二进制"></a>1.十进制转二进制</h5><h5 id="2-转为科学计数法表达方式"><a href="#2-转为科学计数法表达方式" class="headerlink" title="2.转为科学计数法表达方式"></a>2.转为科学计数法表达方式</h5><h5 id="3-填充"><a href="#3-填充" class="headerlink" title="3.填充"></a>3.填充</h5><ul>
+<li>127+n    （n为科学计数法的1.xxxx*2^n）</li>
+<li>会省略整数部分的1</li>
+</ul>
+<hr>
+<h4 id="十进制浮点数转二进制"><a href="#十进制浮点数转二进制" class="headerlink" title="十进制浮点数转二进制"></a>十进制浮点数转二进制</h4><h5 id="“乘2取整，顺序排列”"><a href="#“乘2取整，顺序排列”" class="headerlink" title="“乘2取整，顺序排列”"></a>“乘2取整，顺序排列”</h5><ul>
+<li><p>具体意思：</p>
+<ul>
+<li>将十进制的小数部分乘2，然后取出整数，将新得到的小数继续乘2，如此循环往复直至小数部分为0</li>
+<li>然后按照先后顺序，先取出的整数作为二进制小数的高位有效位，后取出的整数作为低位有效位。</li>
+</ul>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB993e26b7bbcec8b8089a67a5f694ae08?method=download&shareKey=e572e8df83269073e1324c164f722943" alt="2.png"></p>
+<blockquote>
+<p>参考于<a href="https://www.runoob.com/w3cnote/decimal-decimals-are-converted-to-binary-fractions.html" target="_blank" rel="noopener">菜鸟教程</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计组</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/17/%E8%AE%A1%E7%BB%84-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-计组_程序与进程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/16/%E8%AE%A1%E7%BB%84_%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%BF%9B%E7%A8%8B/">计组_程序与进程</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/16/%E8%AE%A1%E7%BB%84_%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-08-16T01:23:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-16</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+    
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/16/%E8%AE%A1%E7%BB%84_%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%BF%9B%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ARM-CPU架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -812,147 +980,6 @@
 
 
   
-    <article id="post-Linux高级_网络编程之网络中的数据传输" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">网络中的数据传输</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/" class="archive-article-date">
-  	<time datetime="2020-07-20T02:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-    
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C语言-正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/C%E8%AF%AD%E8%A8%80-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/C%E8%AF%AD%E8%A8%80-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-20T01:12:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-    
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/C%E8%AF%AD%E8%A8%80-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1082,11 +1109,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计算机组成原理</a>
+                <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">牛客错题集</a>
+                <a href="javascript:void(0)" class="js-tag color3">计组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">计算机组成原理</a>
               </li>
              
               <li class="article-tag-list-item">
