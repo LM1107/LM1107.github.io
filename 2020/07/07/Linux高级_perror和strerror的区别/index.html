@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>网络编程之I/O模型 | Hexo</title>
+  <title>perrpe和strerror的区别 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="阻塞I&#x2F;O非阻塞I&#x2F;OI&#x2F;O多路复用 select() epoll()  &#x2F;&#x2F;poll()">
+  <meta name="description" content="perror和strerror的区别 参考于CSDN博主  先看两个函数的原型 perror()的原型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络编程之I&#x2F;O模型">
-<meta property="og:url" content="http://yoursite.com/2020/07/16/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BIO%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:title" content="perrpe和strerror的区别">
+<meta property="og:url" content="http://yoursite.com/2020/07/07/Linux%E9%AB%98%E7%BA%A7_perror%E5%92%8Cstrerror%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="阻塞I&#x2F;O非阻塞I&#x2F;OI&#x2F;O多路复用 select() epoll()  &#x2F;&#x2F;poll()">
+<meta property="og:description" content="perror和strerror的区别 参考于CSDN博主  先看两个函数的原型 perror()的原型">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-16T02:53:17.000Z">
-<meta property="article:modified_time" content="2020-07-16T02:54:22.296Z">
+<meta property="article:published_time" content="2020-07-07T02:53:38.000Z">
+<meta property="article:modified_time" content="2020-08-30T14:04:54.219Z">
 <meta property="article:author" content="LM1107">
 <meta property="article:tag" content="Linux高级">
 <meta name="twitter:card" content="summary">
@@ -155,14 +155,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Linux高级_网络编程之IO模型" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux高级_perror和strerror的区别" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      网络编程之I/O模型
+      perrpe和strerror的区别
     </h1>
   
 
@@ -173,8 +173,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2020/07/16/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BIO%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-07-16T02:53:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
+<a href="/2020/07/07/Linux%E9%AB%98%E7%BA%A7_perror%E5%92%8Cstrerror%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-07-07T02:53:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
 </a>
         
       </header>
@@ -184,7 +184,41 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="阻塞I-O"><a href="#阻塞I-O" class="headerlink" title="阻塞I/O"></a>阻塞I/O</h3><h3 id="非阻塞I-O"><a href="#非阻塞I-O" class="headerlink" title="非阻塞I/O"></a>非阻塞I/O</h3><h3 id="I-O多路复用-select-epoll-poll"><a href="#I-O多路复用-select-epoll-poll" class="headerlink" title="I/O多路复用 select() epoll()  //poll()"></a>I/O多路复用 select() epoll()  //poll()</h3>
+        <h4 id="perror和strerror的区别"><a href="#perror和strerror的区别" class="headerlink" title="perror和strerror的区别"></a>perror和strerror的区别</h4><blockquote>
+<p>参考于<a href="https://blog.csdn.net/callinglove/article/details/8301789" target="_blank" rel="noopener">CSDN博主</a></p>
+</blockquote>
+<h4 id="先看两个函数的原型"><a href="#先看两个函数的原型" class="headerlink" title="先看两个函数的原型"></a>先看两个函数的原型</h4><ol>
+<li>perror()的原型</li>
+</ol>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">perror</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>strerror()的原型</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">strerror</span><span class="params">(<span class="keyword">int</span> errnum)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>由上可以看出，perror没有返回值，</p>
+<p>strerror的返回值是char *，可以理解为一个指向字符串首地址的指针，记住这点就很容易区分perror和strerror的区别了。</p>
+</li>
+</ul>
+<h4 id="接下来看具体实现"><a href="#接下来看具体实现" class="headerlink" title="接下来看具体实现"></a>接下来看具体实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//perror的实现过程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="string">"1.txt"</span>,O_RDONLY);</span><br><span class="line">	<span class="keyword">if</span>(fd&lt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(<span class="string">"open"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">open:No such file or directory</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//strerror的实现过程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="string">"1.txt"</span>,O_RDONLY);</span><br><span class="line">	<span class="keyword">if</span>(fd&lt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,errno);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*打印内容</span></span><br><span class="line"><span class="comment">No such file or directory</span></span><br><span class="line"><span class="comment">2</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>由上看出，perror()可以将上一条语句（方法）执行后的错误打印到标准输出上。一般情况下（没有使用重定向的话），就是输出到控制台上。但是如果要输出到一个文件，perror()就不适合了。</p>
+</li>
+<li><p>所以这个时候就体现了strerror()的优点，strerror()的返回值是一个char *类型，也就是说会把表示错误信息的字符串当作返回值，如果用一个数组接收，就可以写入到文件中去。</p>
+</li>
+</ul>
+<h4 id="strerror-具体分析"><a href="#strerror-具体分析" class="headerlink" title="strerror()具体分析"></a>strerror()具体分析</h4><ul>
+<li>首先，系统会根据上一条语句的执行错误情况，将errno赋值.。关于这点，我们首先明白两点。第一，<strong>errno是一个系统变量</strong>，是不需要我们赋值或者声明的。第二，errno是一个int类型的变量，而且其中的值对应一种特定错误类型。</li>
+<li>然后，关于streorror（）本身，可以这么理解。顾名思义，streorror=string+error，就是将errno值翻译成描述错误类型的string语句！</li>
+</ul>
+
       
 
       
@@ -274,7 +308,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/16/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8BIO%E6%A8%A1%E5%9E%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/07/Linux%E9%AB%98%E7%BA%A7_perror%E5%92%8Cstrerror%E7%9A%84%E5%8C%BA%E5%88%AB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -288,18 +322,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_bitmap-O-n-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/07/C%E8%AF%AD%E8%A8%80-%E5%AD%97%E8%8A%82%E5%BA%8F-%E5%A4%A7%E7%AB%AF%E5%BA%8F%E5%B0%8F%E7%AB%AF%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          bitmap_O(n)排序算法
+          字节序_大端序小端序
         
       </div>
     </a>
   
   
-    <a href="/2020/07/16/%E8%AE%A1%E7%BB%84_%E9%A1%B5%E8%A1%A8_%E5%AD%98%E5%82%A8%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">页表_存储器</div>
+    <a href="/2020/07/06/C%E8%AF%AD%E8%A8%80-%E6%95%B4%E5%9E%8B%E7%9B%B8%E5%8A%A0%E6%BA%A2%E5%87%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C语言-整型相加溢出</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -437,6 +471,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ARM</a>
               </li>
              
@@ -457,15 +495,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,11 +507,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计组</a>
+                <a href="javascript:void(0)" class="js-tag color3">计算机组成原理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计算机组成原理</a>
+                <a href="javascript:void(0)" class="js-tag color3">计组</a>
               </li>
             
             <div class="clearfix"></div>
