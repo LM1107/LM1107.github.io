@@ -6,23 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>计组_浮点数的存储 | Hexo</title>
+  <title>计组_南桥北桥 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="浮点数的存储方式1.浮点数的存储格式">
-<meta property="og:type" content="article">
-<meta property="og:title" content="计组_浮点数的存储">
-<meta property="og:url" content="http://yoursite.com/2020/08/17/%E8%AE%A1%E7%BB%84-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="计组_南桥北桥">
+<meta property="og:url" content="http://yoursite.com/2020/08/23/%E8%AE%A1%E7%BB%84_%E5%8D%97%E6%A1%A5%E5%8C%97%E6%A1%A5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="浮点数的存储方式1.浮点数的存储格式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBb0aca9e71a06dac8476961496c9dbd41?method=download&shareKey=b8f80e4fe4b4b21d0723eae2d59d6d1e">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB993e26b7bbcec8b8089a67a5f694ae08?method=download&shareKey=e572e8df83269073e1324c164f722943">
-<meta property="article:published_time" content="2020-08-17T01:37:41.000Z">
-<meta property="article:modified_time" content="2020-08-20T08:41:40.787Z">
+<meta property="article:published_time" content="2020-08-23T01:28:51.000Z">
+<meta property="article:modified_time" content="2020-08-23T01:28:51.255Z">
 <meta property="article:author" content="LM1107">
-<meta property="article:tag" content="计组">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBb0aca9e71a06dac8476961496c9dbd41?method=download&shareKey=b8f80e4fe4b4b21d0723eae2d59d6d1e">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -158,14 +152,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-计组-浮点数的存储" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-计组_南桥北桥" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      计组_浮点数的存储
+      计组_南桥北桥
     </h1>
   
 
@@ -176,8 +170,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2020/08/17/%E8%AE%A1%E7%BB%84-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8/" class="archive-article-date">
-  	<time datetime="2020-08-17T01:37:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
+<a href="/2020/08/23/%E8%AE%A1%E7%BB%84_%E5%8D%97%E6%A1%A5%E5%8C%97%E6%A1%A5/" class="archive-article-date">
+  	<time datetime="2020-08-23T01:28:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-23</time>
 </a>
         
       </header>
@@ -187,36 +181,7 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="浮点数的存储方式"><a href="#浮点数的存储方式" class="headerlink" title="浮点数的存储方式"></a>浮点数的存储方式</h3><h4 id="1-浮点数的存储格式"><a href="#1-浮点数的存储格式" class="headerlink" title="1.浮点数的存储格式"></a>1.浮点数的存储格式</h4><a id="more"></a>
-
-<p><img src="https://note.youdao.com/yws/api/personal/file/WEBb0aca9e71a06dac8476961496c9dbd41?method=download&shareKey=b8f80e4fe4b4b21d0723eae2d59d6d1e" alt="1.png"></p>
-<ul>
-<li>上图即 是<strong>单精度浮点数(float)</strong>和<strong>双精度浮点数(double)</strong>的存储格式。<ul>
-<li>符号位：表示浮点数是正数还是负数，0表示正数，1表示负数；</li>
-<li>指数位：通过科学计数法如M*10^N中的N，但这里是以2为底数。01111111代表2^0,即127，所以转换时需要根据127来做偏移调整。</li>
-</ul>
-</li>
-</ul>
-<h4 id="存储步骤"><a href="#存储步骤" class="headerlink" title="存储步骤"></a>存储步骤</h4><h5 id="1-十进制转二进制"><a href="#1-十进制转二进制" class="headerlink" title="1.十进制转二进制"></a>1.十进制转二进制</h5><h5 id="2-转为科学计数法表达方式"><a href="#2-转为科学计数法表达方式" class="headerlink" title="2.转为科学计数法表达方式"></a>2.转为科学计数法表达方式</h5><h5 id="3-填充"><a href="#3-填充" class="headerlink" title="3.填充"></a>3.填充</h5><ul>
-<li>127+n    （n为科学计数法的1.xxxx*2^n）</li>
-<li>会省略整数部分的1</li>
-</ul>
-<hr>
-<h4 id="十进制浮点数转二进制"><a href="#十进制浮点数转二进制" class="headerlink" title="十进制浮点数转二进制"></a>十进制浮点数转二进制</h4><h5 id="“乘2取整，顺序排列”"><a href="#“乘2取整，顺序排列”" class="headerlink" title="“乘2取整，顺序排列”"></a>“乘2取整，顺序排列”</h5><ul>
-<li><p>具体意思：</p>
-<ul>
-<li>将十进制的小数部分乘2，然后取出整数，将新得到的小数继续乘2，如此循环往复直至小数部分为0</li>
-<li>然后按照先后顺序，先取出的整数作为二进制小数的高位有效位，后取出的整数作为低位有效位。</li>
-</ul>
-</li>
-<li><p>示例：</p>
-</li>
-</ul>
-<p><img src="https://note.youdao.com/yws/api/personal/file/WEB993e26b7bbcec8b8089a67a5f694ae08?method=download&shareKey=e572e8df83269073e1324c164f722943" alt="2.png"></p>
-<blockquote>
-<p>参考于<a href="https://www.runoob.com/w3cnote/decimal-decimals-are-converted-to-binary-fractions.html" target="_blank" rel="noopener">菜鸟教程</a></p>
-</blockquote>
-
+        
       
 
       
@@ -245,17 +210,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计组</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -306,7 +260,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/17/%E8%AE%A1%E7%BB%84-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%AD%98%E5%82%A8/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/23/%E8%AE%A1%E7%BB%84_%E5%8D%97%E6%A1%A5%E5%8C%97%E6%A1%A5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -320,18 +274,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/08/18/%E8%AE%A1%E7%BB%84-%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/08/23/20-8-23-%E8%AE%B0%E4%BA%91%E5%9B%BE/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          计组_内存屏障
+          20-8-23_记云图
         
       </div>
     </a>
   
   
-    <a href="/2020/08/16/%E8%AE%A1%E7%BB%84_%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%BF%9B%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计组_程序与进程</div>
+    <a href="/2020/08/18/%E8%AE%A1%E7%BB%84-%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计组_内存屏障</div>
       <i class="icon-circle-right"></i>
     </a>
   
