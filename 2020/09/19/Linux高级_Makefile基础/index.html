@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>网络中的数据传输 | Hexo</title>
+  <title>Linux高级_Makefile基础 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="网络中的数据传输">
-<meta property="og:url" content="http://yoursite.com/2020/07/20/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/index.html">
+  <meta name="description" content="前言：面试的时候被问到了makefile的格式等等，因为平时都是仿照着Linux内核中已有的makefile写的，所以支支吾吾回答不上来就挺难受的，所以现在必须掌握基本的makefile书写规则！  Makefile基本格式1234567target: dependencies	command#target:目标文件，可以理解为what，要编译成什么东西#dependencies:文件依赖，tar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux高级_Makefile基础">
+<meta property="og:url" content="http://yoursite.com/2020/09/19/Linux%E9%AB%98%E7%BA%A7_Makefile%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言：面试的时候被问到了makefile的格式等等，因为平时都是仿照着Linux内核中已有的makefile写的，所以支支吾吾回答不上来就挺难受的，所以现在必须掌握基本的makefile书写规则！  Makefile基本格式1234567target: dependencies	command#target:目标文件，可以理解为what，要编译成什么东西#dependencies:文件依赖，tar">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-20T02:30:32.000Z">
-<meta property="article:modified_time" content="2020-07-20T02:30:32.365Z">
+<meta property="article:published_time" content="2020-09-19T02:53:22.000Z">
+<meta property="article:modified_time" content="2020-09-19T04:11:38.710Z">
 <meta property="article:author" content="LM1107">
+<meta property="article:tag" content="Linux高级">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -152,14 +155,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Linux高级_网络编程之网络中的数据传输" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux高级_Makefile基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      网络中的数据传输
+      Linux高级_Makefile基础
     </h1>
   
 
@@ -170,8 +173,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2020/07/20/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/" class="archive-article-date">
-  	<time datetime="2020-07-20T02:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
+<a href="/2020/09/19/Linux%E9%AB%98%E7%BA%A7_Makefile%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-09-19T02:53:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-19</time>
 </a>
         
       </header>
@@ -181,7 +184,56 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><em>前言：面试的时候被问到了makefile的格式等等，因为平时都是仿照着Linux内核中已有的makefile写的，所以支支吾吾回答不上来就挺难受的，所以现在必须掌握基本的makefile书写规则！</em></p>
+<hr>
+<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h3><h4 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h4><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section">target: dependencies</span></span><br><span class="line">	command</span><br><span class="line"><span class="comment">#target:目标文件，可以理解为what，要编译成什么东西</span></span><br><span class="line"><span class="comment">#dependencies:文件依赖，target目标依赖于哪些文件</span></span><br><span class="line"><span class="comment">#	command: 命令</span></span><br><span class="line"><span class="comment">#warning:command那句前面有一个Tab键</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<ul>
+<li>示例1：只有一个test.c文件</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section">test: test.c</span></span><br><span class="line">	gcc test.c -o test</span><br><span class="line">	<span class="comment">#有一个回车</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="为什么要用Makefile"><a href="#为什么要用Makefile" class="headerlink" title="为什么要用Makefile"></a>为什么要用Makefile</h4><ul>
+<li>上面的示例中，Makefile看起来很简单，就实现了一个test.c 到test的编译连接的过程，如果只是这简简单单的一条指令完全可以在终端中书写，用Makefile会小题大做。</li>
+<li>不过现实生活中的项目可不会只有一个test.c文件，一个项目中会有成千上万的.c文件，如果这个时候还挨个挨个在终端输入，那会浪费掉许多宝贵的项目时间。这个时候就体现了Makefile的优点，它不但可以一次性编译链接好所有源文件，生成一个新的目标文件；它还有另一个巨大的优势，就是每次项目代码做了修改以后，使用make指令只会编译连接被修改过的文件，而不会去浪费大量时间编译连接所有文件，这样可以为调试项目的人省去大量的时间。</li>
+</ul>
+<h4 id="一个主函数，多个需要编译连接的源文件"><a href="#一个主函数，多个需要编译连接的源文件" class="headerlink" title="一个主函数，多个需要编译连接的源文件"></a>一个主函数，多个需要编译连接的源文件</h4><ul>
+<li>示例2：有main.c、tool.c文件</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section">main: main.c tool.o</span></span><br><span class="line">	gcc main.c tool.o -o main</span><br><span class="line">	</span><br><span class="line"><span class="comment">#当前无tool.o，所以下面继续写tool.o的来源</span></span><br><span class="line"><span class="section">tool.o: tool.c</span></span><br><span class="line">	gcc -c tool.c </span><br><span class="line"><span class="comment">#gcc -c 表示只编译不连接</span></span><br><span class="line"><span class="comment">#运行顺序是从下往上执行的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输入make clean可以删除文件</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm *.o main</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>示例3：有main.c、foo.c、bar.c</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">main: main.c foo.o bar.o</span></span><br><span class="line">	gcc main.c fool.o bar.o -o main</span><br><span class="line">	</span><br><span class="line"><span class="section">foo.o: fool.c</span></span><br><span class="line">	gcc -c fool.c</span><br><span class="line">	</span><br><span class="line"><span class="section">bar.o: bar.c</span></span><br><span class="line">	gcc -c bar.c</span><br><span class="line">	</span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm *.o main</span><br></pre></td></tr></table></figure>
+
+<h4 id="定义一个变量"><a href="#定义一个变量" class="headerlink" title="定义一个变量"></a>定义一个变量</h4><ul>
+<li>目的：<ul>
+<li>为了方便修改gcc，比如修改成g++，手动修改容易出错，效率低下</li>
+</ul>
+</li>
+<li>示例4：有tool.c main.c</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CC = gcc</span><br><span class="line">CFLAGS = -lm -Wall -g</span><br><span class="line"></span><br><span class="line"><span class="section">main: main.c tool.o</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> main.c tool.o -o main</span><br><span class="line"></span><br><span class="line"><span class="section">tool.o: tool.c</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c tool.c </span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm *.o main</span><br></pre></td></tr></table></figure>
+
+<h4 id="多个主函数，多个需要编译连接的源文件"><a href="#多个主函数，多个需要编译连接的源文件" class="headerlink" title="多个主函数，多个需要编译连接的源文件"></a>多个主函数，多个需要编译连接的源文件</h4><ul>
+<li>示例5：有main_max.c、main_min.c、foo.c、bar.c</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CC = gcc</span><br><span class="line">CFLAGS = -lm -Wall -g</span><br><span class="line"></span><br><span class="line"><span class="section">main_max: main_max.c foo.o bar.o</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> main_max.c fool.o bar.o -o main_max</span><br><span class="line"></span><br><span class="line"><span class="section">main_min: main_min.c foo.o bar.o</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> main_min.c fool.o bar.o -o main_min</span><br><span class="line"></span><br><span class="line"><span class="section">foo.o: fool.c</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c fool.c</span><br><span class="line">	</span><br><span class="line"><span class="section">bar.o: bar.c</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c bar.c</span><br><span class="line">	</span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm *.o main</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行结果：<strong>跳过了main_min的编译连接步骤</strong></li>
+<li>原因：makefile默认只生成了一个可执行文件，若命令中有多个可执行文件要生成，则只会执行第一个。</li>
+<li>解决：在main_max和main_min之前加上一句 <code>all: main_max main_min</code>  </li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CC = gcc</span><br><span class="line">CFLAGS = -lm -Wall -g</span><br><span class="line"></span><br><span class="line"><span class="section">all: main_max main_min</span></span><br><span class="line"></span><br><span class="line"><span class="section">main_max: main_max.c foo.o bar.o</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> main_max.c fool.o bar.o -o main_max</span><br><span class="line"></span><br><span class="line"><span class="section">main_min: main_min.c foo.o bar.o</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> main_min.c fool.o bar.o -o main_min</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这样就可以生成多个可执行文件</li>
+</ul>
+
       
 
       
@@ -210,6 +262,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux高级</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -260,7 +323,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/20/Linux%E9%AB%98%E7%BA%A7_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/19/Linux%E9%AB%98%E7%BA%A7_Makefile%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -274,18 +337,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/22/C_C++%E7%9A%84%E5%B7%AE%E5%BC%82%E6%80%A7/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          C与C++的差异性
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/20/C%E8%AF%AD%E8%A8%80-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">正则表达式</div>
+    <a href="/2020/09/18/%E9%9D%A2%E7%BB%8F_9_18%E8%A5%BF%E5%AE%89%E8%AF%BA%E7%93%A6%E4%B8%80%E9%9D%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">面经_9.18西安诺瓦一面</div>
       <i class="icon-circle-right"></i>
     </a>
   
